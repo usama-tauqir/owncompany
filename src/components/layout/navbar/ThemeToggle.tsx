@@ -1,67 +1,43 @@
 "use client";
 
 import { useState } from "react";
-
+import styles from "./Navbar.module.css";
 
 export default function ThemeToggle() {
-
   const [dark, setDark] = useState(false);
 
-
   const toggleTheme = () => {
-
-    setDark(!dark);
+    const nextDark = !dark;
 
     document.documentElement.classList.toggle(
-      "dark"
+      "dark",
+      nextDark,
     );
 
+    setDark(nextDark);
   };
 
-
   return (
-
     <button
       id="dark-light-mode"
+      type="button"
+      className={styles.themeToggle}
       onClick={toggleTheme}
-      aria-label="View Dark Mode"
+      aria-label={
+        dark
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      }
       aria-pressed={dark}
-      className="
-      relative
-      flex
-      items-center
-      w-11
-      h-6
-      rounded-full
-      bg-black
-      p-[2px]
-      transition-all
-      duration-300
-      "
     >
-
-
       <span
-
-        className={`
-        h-5
-        w-5
-        rounded-full
-        bg-white
-        transition-transform
-        duration-300
-
-        ${
-          dark
-          ? "translate-x-5"
-          : "translate-x-0"
-        }
-
-        `}
+        className={[
+          styles.themeToggleKnob,
+          dark ? styles.themeToggleKnobDark : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       />
-
-
     </button>
-
   );
 }

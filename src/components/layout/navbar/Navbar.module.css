@@ -1,0 +1,812 @@
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(html),
+:global(body) {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   HEADER SHELL
+   ========================================================= */
+
+.header {
+  --header-height: 84px;
+  --header-padding: 38px;
+  --brand-color: #14b8b2;
+  --text-color: #050505;
+
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  width: 100%;
+  height: var(--header-height);
+  background: #ffffff;
+  color: var(--text-color);
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid transparent;
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease;
+}
+
+.headerScrolled {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.headerMenuOpen {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbarContainer {
+  width: 100%;
+  height: var(--header-height);
+  margin: 0;
+  padding: 0 var(--header-padding);
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 24px;
+}
+
+/* =========================================================
+   LEFT SIDE: LOGO + THEME TOGGLE
+   ========================================================= */
+
+.navbarLeft {
+  width: 264px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarLogo {
+  width: 39px;
+  height: 47px;
+  flex: 0 0 39px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
+.navbarLogo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.themeToggleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Theme toggle */
+
+.themeToggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  padding: 2px;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  background: #050505;
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.themeToggleKnob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: block;
+  background: #ffffff;
+  transform: translateX(0);
+  transition:
+    transform 250ms ease,
+    background-color 250ms ease;
+}
+
+.themeToggleKnobDark {
+  transform: translateX(18px);
+}
+
+/* =========================================================
+   CENTER NAVIGATION
+   ========================================================= */
+
+.navbarCenter {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbarLinks {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 2vw, 39px);
+}
+
+.megaMenuTrigger {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #050505;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.megaMenuTriggerIcon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  transition: transform 200ms ease;
+}
+
+.megaMenuTriggerActive .megaMenuTriggerIcon {
+  transform: rotate(180deg);
+}
+
+.megaMenuTrigger:focus-visible {
+  outline: 2px solid var(--brand-color);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+/*
+  Remove the underline that was appearing under your
+  first and second navigation items.
+*/
+.megaMenuTrigger::after {
+  display: none;
+}
+
+/* =========================================================
+   RIGHT SIDE: CTA BUTTONS + GLOBAL SELECTOR
+   ========================================================= */
+
+.navbarRight {
+  min-width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 35px;
+}
+
+.navbarActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbarCTA {
+  height: 46px;
+  padding: 0 20px;
+  border: 1.5px solid var(--brand-color);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.navbarCTAPrimary {
+  min-width: 164px;
+  background: var(--brand-color);
+  color: #ffffff;
+}
+
+.navbarCTAPrimary:hover {
+  background: #0fa9a4;
+  border-color: #0fa9a4;
+}
+
+.navbarCTASecondary {
+  min-width: 177px;
+  background: #ffffff;
+  color: #0eaaa5;
+}
+
+.navbarCTASecondary:hover {
+  background: var(--brand-color);
+  color: #ffffff;
+}
+
+.navbarCTA:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   GLOBAL SELECTOR
+   ========================================================= */
+
+.globalSelector {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.globalSelectorTrigger {
+  height: 46px;
+  padding: 0;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: transparent;
+  color: #050505;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 200ms ease;
+}
+
+.chevronOpen {
+  width: 14px;
+  height: 14px;
+  transform: rotate(180deg);
+  transition: transform 200ms ease;
+}
+
+.globalSelectorMenu {
+  position: absolute;
+  top: calc(100% + 18px);
+  right: 0;
+  z-index: 1160;
+  width: 220px;
+  padding: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+.globalSelectorMenuOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.globalSelectorLink {
+  min-height: 42px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  color: #111111;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.globalSelectorLink:hover {
+  background: #f3f3f3;
+}
+
+/* =========================================================
+   DESKTOP MEGA MENU
+   ========================================================= */
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1110;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    max-height 300ms ease,
+    opacity 220ms ease,
+    transform 220ms ease,
+    visibility 220ms ease;
+}
+
+.megaMenuOpen {
+  max-height: calc(100vh - var(--header-height));
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.megaMenuInner {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding: 38px var(--header-padding) 46px;
+}
+
+.megaMenuBackdrop {
+  position: fixed;
+  inset: 84px 0 0;
+  z-index: 1050;
+  padding: 0;
+  border: 0;
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    visibility 220ms ease;
+}
+
+.megaMenuBackdropOpen {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =========================================================
+   MEGA MENU CONTENT
+   ========================================================= */
+
+.megaMenuTitle {
+  margin: 0 0 30px;
+  font-size: clamp(28px, 2.2vw, 38px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.capabilitiesMenu,
+.industriesMenu {
+  width: 100%;
+}
+
+.capabilitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px 48px;
+}
+
+.capabilityGroup {
+  min-width: 0;
+}
+
+.capabilityGroupTitle {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.megaMenuLinkList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.megaMenuLink {
+  color: rgba(17, 17, 17, 0.68);
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.megaMenuLink:hover {
+  color: #111111;
+  transform: translateX(3px);
+}
+
+.industriesGrid {
+  width: min(900px, 100%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 80px;
+  row-gap: 18px;
+}
+
+.industryLink {
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.industryLink:hover {
+  opacity: 0.6;
+}
+
+.simpleListMenu {
+  width: min(600px, 100%);
+}
+
+.simpleListLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.simpleListLink {
+  color: #111111;
+  font-size: clamp(22px, 2vw, 32px);
+  font-weight: 450;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.mobileMenuButton {
+  display: none;
+}
+
+.mobileMenuIcon {
+  position: relative;
+  width: 26px;
+  height: 20px;
+  display: block;
+}
+
+.mobileMenuLineTop,
+.mobileMenuLineMiddle,
+.mobileMenuLineBottom {
+  position: absolute;
+  left: 0;
+  width: 26px;
+  height: 2px;
+  display: block;
+  background: #111111;
+  transition:
+    transform 250ms ease,
+    opacity 250ms ease,
+    top 250ms ease;
+}
+
+.mobileMenuLineTop {
+  top: 1px;
+}
+
+.mobileMenuLineMiddle {
+  top: 9px;
+}
+
+.mobileMenuLineBottom {
+  top: 17px;
+}
+
+.mobileMenuButtonOpen .mobileMenuLineTop {
+  top: 9px;
+  transform: rotate(45deg);
+}
+
+.mobileMenuButtonOpen .mobileMenuLineMiddle {
+  opacity: 0;
+}
+
+.mobileMenuButtonOpen .mobileMenuLineBottom {
+  top: 9px;
+  transform: rotate(-45deg);
+}
+
+/* =========================================================
+   MOBILE DRAWER
+   ========================================================= */
+
+.mobileDrawerRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease;
+}
+
+.mobileDrawerRootOpen {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileDrawerBackdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mobileDrawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(430px, 100%);
+  height: 100%;
+  overflow-y: auto;
+  background: #ffffff;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+}
+
+.mobileDrawerOpen {
+  transform: translateX(0);
+}
+
+.mobileMenu {
+  min-height: 100%;
+  padding: 88px 24px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileAccordion {
+  width: 100%;
+}
+
+.mobileAccordionLinks {
+  padding: 12px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobileAccordionLinks a {
+  color: #111111;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.mobileMenuActions {
+  margin-top: auto;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobilePrimaryButton,
+.mobileSecondaryButton {
+  min-height: 48px;
+  padding-inline: 20px;
+  border: 1px solid var(--brand-color);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.mobilePrimaryButton {
+  background: var(--brand-color);
+  color: #ffffff;
+}
+
+.mobileSecondaryButton {
+  background: transparent;
+  color: var(--brand-color);
+}
+
+/* Raw classes from MobileAccordion.tsx */
+
+:global(.mobile-accordion__item) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+:global(.mobile-accordion__button) {
+  width: 100%;
+  min-height: 58px;
+  padding: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  color: #111111;
+  font: inherit;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+:global(.mobile-accordion__panel) {
+  overflow: hidden;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1600px) {
+  .navbarContainer {
+    grid-template-columns: 255px minmax(0, 1fr) auto;
+    padding-inline: 28px;
+    column-gap: 18px;
+  }
+
+  .navbarLeft {
+    width: 220px;
+  }
+
+  .navbarLinks {
+    gap: 21px;
+  }
+
+  .megaMenuTrigger {
+    font-size: 12px;
+  }
+
+  .navbarRight {
+    gap: 22px;
+  }
+
+  .navbarCTA {
+    padding-inline: 16px;
+    font-size: 14px;
+  }
+
+  .navbarCTAPrimary {
+    min-width: 145px;
+  }
+
+  .navbarCTASecondary {
+    min-width: 158px;
+  }
+
+  .globalSelectorTrigger {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .navbarContainer {
+    grid-template-columns: 190px minmax(0, 1fr) auto;
+    padding-inline: 20px;
+    column-gap: 12px;
+  }
+
+  .navbarLeft {
+    width: 170px;
+  }
+
+  .navbarLinks {
+    gap: 13px;
+  }
+
+  .megaMenuTrigger {
+    gap: 4px;
+    font-size: 10.5px;
+  }
+
+  .navbarActions {
+    gap: 8px;
+  }
+
+  .navbarRight {
+    gap: 12px;
+  }
+
+  .navbarCTA {
+    height: 42px;
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
+  .globalSelectorTrigger {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    --header-height: 72px;
+  }
+
+  .navbarContainer {
+    height: 72px;
+    padding-inline: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbarLeft {
+    width: auto;
+    gap: 22px;
+  }
+
+  .navbarCenter,
+  .navbarRight,
+  .megaMenu,
+  .megaMenuBackdrop {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .mobileDrawerRoot {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobileDrawerRoot {
+    display: none;
+  }
+}
