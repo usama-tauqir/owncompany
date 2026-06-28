@@ -1,0 +1,425 @@
+.leadershipSection {
+  --leadership-accent: #11bbb4;
+  --leadership-background: #ffffff;
+  --leadership-text: #050505;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding:
+    clamp(50px, 5vw, 74px)
+    0
+    clamp(30px, 4vw, 58px);
+
+  background: var(--leadership-background);
+  color: var(--leadership-text);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.sectionHeader {
+  width: min(100% - 96px, 1720px);
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.heading {
+  margin: 0;
+
+  color: var(--leadership-text);
+
+  font-size: clamp(48px, 4.2vw, 68px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+/* =========================================================
+   ARROW BUTTONS
+   ========================================================= */
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.navigationButton {
+  position: relative;
+
+  width: 49px;
+  height: 49px;
+  flex: 0 0 49px;
+
+  padding: 0;
+
+  border:
+    1px dashed
+    var(--leadership-accent);
+
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  color: var(--leadership-accent);
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.navigationButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+.navigationButton:hover:not(:disabled) {
+  background: var(--leadership-accent);
+  color: #ffffff;
+  border-style: solid;
+  transform: translateY(-2px);
+}
+
+.navigationButton:disabled {
+  opacity: 0.36;
+  cursor: default;
+}
+
+.navigationButton:focus-visible {
+  outline:
+    3px solid
+    rgba(17, 187, 180, 0.32);
+
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   SLIDER
+   ========================================================= */
+
+.sliderViewport {
+  width: 100%;
+  margin-top: clamp(65px, 6vw, 95px);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  overscroll-behavior-inline: contain;
+}
+
+.sliderViewport::-webkit-scrollbar {
+  display: none;
+}
+
+.sliderViewport:focus-visible {
+  outline: none;
+}
+
+.sliderTrack {
+  width: max-content;
+
+  display: flex;
+  align-items: flex-start;
+
+  column-gap: 1px;
+
+  /*
+   * This large leading space matches the reference where
+   * the first portrait begins near the middle of the screen.
+   */
+  padding-left: clamp(420px, 40vw, 760px);
+  padding-right: clamp(50px, 5vw, 100px);
+}
+
+/* =========================================================
+   LEADER CARD
+   ========================================================= */
+
+.leaderCard {
+  width: clamp(350px, 24.4vw, 450px);
+  flex: 0 0 clamp(350px, 24.4vw, 450px);
+
+  scroll-snap-align: start;
+}
+
+.imageFrame {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+.leaderImage {
+  object-fit: contain;
+  object-position: center bottom;
+
+  transition:
+    transform 450ms
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.leaderCard:hover .leaderImage {
+  transform: scale(1.025);
+}
+
+/* =========================================================
+   LEADER INFORMATION
+   ========================================================= */
+
+.leaderInformation {
+  padding:
+    18px
+    0
+    0;
+}
+
+.leaderName {
+  margin: 0;
+
+  color: var(--leadership-text);
+
+  font-size: clamp(35px, 2.7vw, 50px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+
+  white-space: nowrap;
+}
+
+.highlightedName {
+  color: var(--leadership-accent);
+}
+
+.leaderRole {
+  margin: 22px 0 0;
+
+  color: var(--leadership-text);
+
+  font-size: clamp(20px, 1.5vw, 25px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.linkedinLink {
+  width: 26px;
+  height: 26px;
+
+  margin-top: 11px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--leadership-text);
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.linkedinLink svg {
+  width: 100%;
+  height: 100%;
+}
+
+.linkedinLink:hover {
+  color: var(--leadership-accent);
+  transform: translateY(-2px);
+}
+
+.linkedinLink:focus-visible {
+  outline:
+    2px solid
+    var(--leadership-accent);
+
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .sectionHeader {
+    width: min(100% - 64px, 1240px);
+  }
+
+  .sliderTrack {
+    padding-left: clamp(350px, 35vw, 520px);
+  }
+
+  .leaderCard {
+    width: 390px;
+    flex-basis: 390px;
+  }
+
+  .leaderName {
+    font-size: 40px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .leadershipSection {
+    padding-top: 68px;
+  }
+
+  .sectionHeader {
+    width: min(100% - 48px, 850px);
+  }
+
+  .heading {
+    font-size: clamp(43px, 7vw, 58px);
+  }
+
+  .sliderViewport {
+    margin-top: 58px;
+  }
+
+  .sliderTrack {
+    column-gap: 22px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .leaderCard {
+    width: min(46vw, 390px);
+    flex-basis: min(46vw, 390px);
+  }
+
+  .leaderName {
+    font-size: clamp(32px, 4vw, 40px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .leadershipSection {
+    padding: 58px 0 45px;
+  }
+
+  .sectionHeader {
+    width: min(100% - 32px, 560px);
+    align-items: flex-end;
+  }
+
+  .heading {
+    max-width: 310px;
+
+    font-size: clamp(39px, 11vw, 49px);
+    line-height: 1.08;
+  }
+
+  .navigation {
+    gap: 8px;
+  }
+
+  .navigationButton {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .navigationButton svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .sliderViewport {
+    margin-top: 45px;
+  }
+
+  .sliderTrack {
+    column-gap: 16px;
+    padding-inline: 16px;
+  }
+
+  .leaderCard {
+    width: 82vw;
+    flex-basis: 82vw;
+  }
+
+  .leaderInformation {
+    padding-top: 14px;
+  }
+
+  .leaderName {
+    font-size: clamp(34px, 10vw, 43px);
+    white-space: normal;
+  }
+
+  .leaderRole {
+    margin-top: 14px;
+    font-size: 20px;
+  }
+
+  .linkedinLink {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .leadershipSection {
+  --leadership-background: #080808;
+  --leadership-text: #ffffff;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sliderViewport {
+    scroll-behavior: auto;
+  }
+
+  .navigationButton,
+  .leaderImage,
+  .linkedinLink {
+    transition: none;
+  }
+}

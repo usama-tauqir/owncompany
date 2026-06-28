@@ -1,0 +1,437 @@
+.careersSection {
+  --career-accent: #13bbb5;
+  --career-background: #ffffff;
+  --career-text: #050505;
+  --navbar-height: 84px;
+
+  position: relative;
+  width: 100%;
+
+  /*
+   * This creates the scrolling distance used by
+   * the sticky animation.
+   */
+  height: 210vh;
+
+  background: var(--career-background);
+  color: var(--career-text);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   STICKY VIEWPORT
+   ========================================================= */
+
+.stickyStage {
+  position: sticky;
+  top: var(--navbar-height);
+
+  width: 100%;
+  height:
+    calc(
+      100vh -
+      var(--navbar-height)
+    );
+  height:
+    calc(
+      100svh -
+      var(--navbar-height)
+    );
+
+  overflow: hidden;
+
+  background: var(--career-background);
+}
+
+/* =========================================================
+   ANIMATED VIDEO FRAME
+   ========================================================= */
+
+.videoFrame {
+  --career-video-width: 100%;
+  --career-video-height: 100%;
+  --career-video-top: 0%;
+
+  position: absolute;
+  top: var(--career-video-top);
+  left: 0;
+
+  width: var(--career-video-width);
+  height: var(--career-video-height);
+
+  overflow: hidden;
+
+  background: #d8d8d8;
+
+  will-change:
+    width,
+    height,
+    top;
+
+  transform: translateZ(0);
+}
+
+.careerVideo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CAREER CONTENT
+   ========================================================= */
+
+.careerContent {
+  --career-content-opacity: 0;
+  --career-content-y: 110px;
+
+  position: absolute;
+  top: 50%;
+  right: clamp(42px, 7vw, 130px);
+
+  z-index: 5;
+
+  width: min(35%, 540px);
+
+  opacity:
+    var(--career-content-opacity);
+
+  transform:
+    translate3d(
+      0,
+      calc(
+        -50% +
+        var(--career-content-y)
+      ),
+      0
+    );
+
+  will-change:
+    opacity,
+    transform;
+}
+
+.contentInner {
+  width: 100%;
+  max-width: 510px;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.eyebrow {
+  margin: 0 0 24px;
+
+  color: var(--career-accent);
+
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.heading {
+  max-width: 520px;
+  margin: 0;
+
+  color: var(--career-text);
+
+  font-size: clamp(44px, 3.7vw, 64px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.052em;
+
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 520px;
+  margin: 28px 0 0;
+
+  color: var(--career-text);
+
+  font-size: clamp(21px, 1.85vw, 30px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   JOIN BUTTON
+   ========================================================= */
+
+.joinButton {
+  min-width: 134px;
+  min-height: 66px;
+
+  margin-top: 40px;
+  padding: 0 31px;
+
+  border: 2px solid var(--career-accent);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--career-accent);
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+
+  white-space: nowrap;
+  text-decoration: none;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.joinButton:hover {
+  background: transparent;
+  color: var(--career-accent);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(19, 187, 181, 0.2);
+}
+
+.joinButton:focus-visible {
+  outline:
+    3px solid
+    rgba(19, 187, 181, 0.4);
+
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1800px) {
+  .careerContent {
+    right: max(
+      7vw,
+      calc(
+        (100vw - 1720px) / 2
+      )
+    );
+
+    width: 35%;
+  }
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .careerContent {
+    right: 52px;
+    width: 36%;
+  }
+
+  .heading {
+    font-size: clamp(
+      40px,
+      3.9vw,
+      55px
+    );
+  }
+
+  .description {
+    font-size: clamp(
+      20px,
+      2vw,
+      26px
+    );
+  }
+}
+
+/* =========================================================
+   TABLET AND MOBILE
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .careersSection {
+    --navbar-height: 72px;
+
+    height: auto;
+    padding: 72px 0;
+
+    background: var(--career-background);
+  }
+
+  .stickyStage {
+    position: relative;
+    top: auto;
+
+    height: auto;
+    overflow: visible;
+
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .videoFrame {
+    position: relative;
+    top: auto !important;
+    left: auto;
+
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+
+    grid-row: 1;
+  }
+
+  .careerContent {
+    position: relative;
+    top: auto;
+    right: auto;
+
+    width: 100%;
+    padding: 58px 32px 0;
+
+    grid-row: 2;
+
+    opacity: 1 !important;
+    transform: none !important;
+
+    pointer-events: auto !important;
+  }
+
+  .contentInner {
+    max-width: 680px;
+  }
+
+  .heading {
+    font-size: clamp(
+      42px,
+      7vw,
+      60px
+    );
+  }
+
+  .description {
+    max-width: 650px;
+
+    font-size: clamp(
+      21px,
+      3.4vw,
+      29px
+    );
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .careersSection {
+    padding: 52px 0 62px;
+  }
+
+  .videoFrame {
+    aspect-ratio: 1.25 / 1;
+  }
+
+  .careerVideo {
+    object-position: 48% center;
+  }
+
+  .careerContent {
+    padding:
+      44px
+      20px
+      0;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .heading {
+    font-size: clamp(
+      39px,
+      11vw,
+      50px
+    );
+  }
+
+  .description {
+    margin-top: 22px;
+    font-size: 21px;
+  }
+
+  .joinButton {
+    min-width: 126px;
+    min-height: 58px;
+
+    margin-top: 30px;
+    padding-inline: 26px;
+
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .careersSection {
+  --career-background: #080808;
+  --career-text: #ffffff;
+}
+
+:global(html.dark) .stickyStage {
+  background: var(--career-background);
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .videoFrame {
+    top: 14%;
+    width: 58%;
+    height: 72%;
+  }
+
+  .careerContent {
+    opacity: 1;
+    transform: translate3d(
+      0,
+      -50%,
+      0
+    );
+  }
+
+  .joinButton {
+    transition: none;
+  }
+}

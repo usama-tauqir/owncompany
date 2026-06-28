@@ -1,0 +1,329 @@
+.achievementsSection {
+  --achievement-accent: #14bcb5;
+  --achievement-background: #ffffff;
+  --achievement-text: #050505;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding:
+    clamp(24px, 3vw, 42px)
+    0
+    clamp(90px, 9vw, 125px);
+
+  background: var(--achievement-background);
+  color: var(--achievement-text);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+  width: min(100% - 136px, 1172px);
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(430px, 0.92fr);
+
+  align-items: start;
+  gap: clamp(60px, 7vw, 105px);
+}
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.content {
+  max-width: 625px;
+}
+
+.eyebrow {
+  margin: 0 0 15px;
+
+  color: var(--achievement-accent);
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+
+  color: var(--achievement-text);
+
+  font-size: clamp(38px, 3.2vw, 44px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.description {
+  max-width: 610px;
+  margin-top: 20px;
+
+  color: var(--achievement-text);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.description p {
+  margin: 0;
+}
+
+.description p + p {
+  margin-top: 22px;
+}
+
+.contactButton {
+  min-width: 184px;
+  min-height: 67px;
+
+  margin-top: 32px;
+  padding: 0 30px;
+
+  border: 2px solid var(--achievement-accent);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--achievement-accent);
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.contactButton:hover {
+  background: transparent;
+  color: var(--achievement-accent);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(20, 188, 181, 0.2);
+}
+
+.contactButton:focus-visible {
+  outline:
+    3px solid
+    rgba(20, 188, 181, 0.38);
+
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   ACHIEVEMENTS GRID
+   ========================================================= */
+
+.achievementsGrid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: clamp(42px, 5vw, 78px);
+  row-gap: 24px;
+}
+
+/* =========================================================
+   ACHIEVEMENT ITEM
+   ========================================================= */
+
+.achievementItem {
+  min-width: 0;
+  min-height: 96px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.counter {
+  margin: 0;
+
+  color: var(--achievement-accent);
+
+  font-size: clamp(46px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.counterLabel {
+  max-width: 240px;
+  margin: 22px auto 0;
+
+  color: var(--achievement-text);
+
+  font-size: clamp(18px, 1.65vw, 23px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .achievementsSection {
+  --achievement-background: #080808;
+  --achievement-text: #ffffff;
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1150px) {
+  .container {
+    width: min(100% - 64px, 1040px);
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(390px, 0.9fr);
+
+    gap: 48px;
+  }
+
+  .achievementsGrid {
+    column-gap: 36px;
+  }
+
+  .counterLabel {
+    font-size: 19px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .achievementsSection {
+    padding: 68px 0 80px;
+  }
+
+  .container {
+    width: min(100% - 48px, 760px);
+
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  .achievementsGrid {
+    max-width: 650px;
+    column-gap: 50px;
+    row-gap: 42px;
+  }
+
+  .counter {
+    font-size: 52px;
+  }
+
+  .counterLabel {
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .achievementsSection {
+    padding: 58px 0 68px;
+  }
+
+  .container {
+    width: min(100% - 32px, 520px);
+    gap: 52px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .heading {
+    font-size: clamp(37px, 11vw, 48px);
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .contactButton {
+    min-width: 168px;
+    min-height: 58px;
+
+    padding-inline: 25px;
+
+    font-size: 17px;
+  }
+
+  .achievementsGrid {
+    grid-template-columns: 1fr;
+    row-gap: 36px;
+  }
+
+  .achievementItem {
+    min-height: 0;
+  }
+
+  .counter {
+    font-size: 50px;
+  }
+
+  .counterLabel {
+    margin-top: 14px;
+    font-size: 20px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .contactButton {
+    transition: none;
+  }
+}

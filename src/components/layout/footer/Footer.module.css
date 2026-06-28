@@ -1,0 +1,613 @@
+.footer {
+  --footer-accent: #13bbb5;
+  --footer-background: #ffffff;
+  --footer-text: #050505;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 620px;
+  overflow: hidden;
+
+  padding: 54px 0 42px;
+
+  background: var(--footer-background);
+  color: var(--footer-text);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.container {
+  position: relative;
+  z-index: 3;
+
+  width: min(100% - 96px, 1660px);
+  margin-inline: auto;
+}
+
+/* =========================================================
+   BACKGROUND GRADIENT
+   ========================================================= */
+
+.footerGradient {
+  position: absolute;
+  right: -170px;
+  bottom: -210px;
+  z-index: 0;
+
+  width: 690px;
+  height: 570px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 58% 58%,
+      rgba(16, 187, 181, 0.98) 0%,
+      rgba(25, 198, 193, 0.78) 28%,
+      rgba(91, 211, 208, 0.54) 43%,
+      rgba(175, 235, 233, 0.28) 59%,
+      rgba(255, 255, 255, 0) 75%
+    );
+
+  filter: blur(14px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   TOP ROW
+   ========================================================= */
+
+.topRow {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: flex-start;
+  gap: 70px;
+}
+
+.footerLogo {
+  width: 62px;
+  height: 72px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--footer-accent);
+  text-decoration: none;
+}
+
+.footerLogoIcon {
+  width: 58px;
+  height: 68px;
+  display: block;
+}
+
+.footerLogo:focus-visible {
+  outline: 2px solid var(--footer-accent);
+  outline-offset: 6px;
+}
+
+/* =========================================================
+   FOOTER NAVIGATION
+   ========================================================= */
+
+.footerNavigation {
+  display: grid;
+  grid-template-columns:
+    0.8fr
+    1.1fr
+    1.25fr
+    0.65fr;
+
+  align-items: flex-start;
+  gap: clamp(42px, 5vw, 100px);
+
+  padding-top: 14px;
+}
+
+.dropdown {
+  position: relative;
+  min-width: 0;
+}
+
+.dropdownTrigger {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+
+  color: var(--footer-text);
+
+  font-size: clamp(16px, 1.12vw, 20px);
+  font-weight: 500;
+  line-height: 1.2;
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dropdownTrigger::-webkit-details-marker {
+  display: none;
+}
+
+.dropdownChevron {
+  width: 18px;
+  height: 14px;
+  flex: 0 0 18px;
+
+  color: var(--footer-accent);
+
+  transition:
+    transform 250ms ease;
+}
+
+.dropdown[open] .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
+  z-index: 20;
+
+  width: 220px;
+  padding: 22px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+
+  box-shadow:
+    0 18px 46px
+    rgba(0, 0, 0, 0.14);
+
+  animation: footerPanelOpen 220ms ease both;
+}
+
+.dropdownPanelTwo {
+  width: 510px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+}
+
+.dropdownPanelThree {
+  width: 760px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 30px;
+}
+
+.dropdownPanelRight {
+  right: 0;
+  left: auto;
+}
+
+.dropdownLink {
+  color: #111111;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.dropdownLink:hover {
+  color: var(--footer-accent);
+  transform: translateX(3px);
+}
+
+@keyframes footerPanelOpen {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   OFFICES
+   ========================================================= */
+
+.officeGrid {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  column-gap: clamp(62px, 9vw, 160px);
+  row-gap: 20px;
+}
+
+.office {
+  min-width: 0;
+  max-width: 360px;
+}
+
+.officeHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.officeTitle {
+  margin: 0;
+
+  color: var(--footer-text);
+
+  font-size: clamp(17px, 1.28vw, 23px);
+  font-weight: 400;
+  line-height: 1.2;
+
+  letter-spacing: -0.035em;
+}
+
+.officeTitle strong {
+  font-weight: 700;
+}
+
+.officeTitle span {
+  font-size: 0.78em;
+  font-weight: 400;
+}
+
+.officeFlag {
+  width: 35px;
+  height: 20px;
+
+  flex: 0 0 35px;
+  display: block;
+  object-fit: cover;
+}
+
+.officeAddress {
+  margin-top: 10px;
+
+  color: var(--footer-text);
+
+  font-size: clamp(17px, 1.22vw, 22px);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.36;
+
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.footerBottom {
+  margin-top: 34px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.businessEmail {
+  color: var(--footer-text);
+
+  font-size: clamp(21px, 1.65vw, 29px);
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: -0.045em;
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.businessEmail:hover {
+  color: var(--footer-accent);
+}
+
+.legalLinks {
+  margin-top: 36px;
+
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.legalLinks a {
+  color: var(--footer-text);
+
+  font-size: 14px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.legalLinks a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   SOCIAL LINKS
+   ========================================================= */
+
+.socialLinks {
+  position: relative;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding-bottom: 4px;
+}
+
+.socialLink {
+  width: 25px;
+  height: 25px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #050505;
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.socialLink svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.socialLink:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid #050505;
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1300px) {
+  .container {
+    width: min(100% - 64px, 1200px);
+  }
+
+  .topRow {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 45px;
+  }
+
+  .footerNavigation {
+    gap: 38px;
+  }
+
+  .dropdownPanelThree {
+    width: 680px;
+  }
+
+  .officeGrid {
+    column-gap: 65px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .footer {
+    min-height: 0;
+    padding: 58px 0 44px;
+  }
+
+  .container {
+    width: min(100% - 48px, 850px);
+  }
+
+  .topRow {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .footerNavigation {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 0;
+  }
+
+  .dropdown {
+    border-bottom:
+      1px solid
+      rgba(0, 0, 0, 0.17);
+  }
+
+  .dropdownTrigger {
+    padding: 19px 0;
+    font-size: 18px;
+  }
+
+  .dropdownPanel,
+  .dropdownPanelTwo,
+  .dropdownPanelThree,
+  .dropdownPanelRight {
+    position: static;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+    padding: 6px 0 14px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 25px;
+
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .officeGrid {
+    margin-top: 50px;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 38px 55px;
+  }
+
+  .footerGradient {
+    right: -230px;
+    bottom: -220px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 48px 0 36px;
+  }
+
+  .container {
+    width: min(100% - 32px, 540px);
+  }
+
+  .footerLogo {
+    width: 52px;
+    height: 62px;
+  }
+
+  .footerLogoIcon {
+    width: 49px;
+    height: 58px;
+  }
+
+  .dropdownPanel,
+  .dropdownPanelTwo,
+  .dropdownPanelThree,
+  .dropdownPanelRight {
+    grid-template-columns: 1fr;
+  }
+
+  .officeGrid {
+    margin-top: 42px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .office {
+    max-width: 100%;
+  }
+
+  .officeTitle {
+    font-size: 21px;
+  }
+
+  .officeAddress {
+    font-size: 19px;
+  }
+
+  .footerBottom {
+    margin-top: 42px;
+
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .businessEmail {
+    font-size: clamp(20px, 6vw, 25px);
+    overflow-wrap: anywhere;
+  }
+
+  .legalLinks {
+    margin-top: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .socialLinks {
+    align-self: flex-end;
+  }
+
+  .footerGradient {
+    right: -290px;
+    bottom: -260px;
+
+    width: 620px;
+    height: 530px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .footer {
+  --footer-background: #080808;
+  --footer-text: #ffffff;
+}
+
+:global(html.dark) .dropdownPanel {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #111111;
+}
+
+:global(html.dark) .dropdownLink {
+  color: #ffffff;
+}
+
+:global(html.dark) .socialLink {
+  color: #ffffff;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdownChevron,
+  .dropdownLink,
+  .businessEmail,
+  .socialLink {
+    transition: none;
+  }
+
+  .dropdownPanel {
+    animation: none;
+  }
+}

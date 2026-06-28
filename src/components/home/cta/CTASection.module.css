@@ -1,0 +1,91 @@
+.ctaSection {
+  --cta-accent: #13bcb6;
+
+  width: 100%;
+  min-height: 120px;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1720px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ctaButton {
+  min-width: 192px;
+  min-height: 53px;
+  padding: 0 26px;
+  border: 2px solid var(--cta-accent);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cta-accent);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.ctaButton:hover {
+  background: #ffffff;
+  color: var(--cta-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(19, 188, 182, 0.2);
+}
+
+.ctaButton:focus-visible {
+  outline: 3px solid rgba(19, 188, 182, 0.4);
+  outline-offset: 5px;
+}
+
+/* Dark mode */
+
+:global(html.dark) .ctaSection {
+  background: #080808;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .ctaSection {
+    min-height: 108px;
+    padding: 28px 20px;
+  }
+
+  .ctaButton {
+    min-width: 180px;
+    min-height: 51px;
+    padding-inline: 22px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaButton {
+    transition: none;
+  }
+}

@@ -1,0 +1,685 @@
+.section {
+  --contact-accent: #12bbb5;
+  --contact-dark: #075d75;
+  --contact-text: #050505;
+  --contact-background: #ffffff;
+  --contact-input-background: #f5f8f9;
+  --contact-input-border: #aeb8bb;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  padding:
+    clamp(58px, 5vw, 88px)
+    0
+    clamp(50px, 5vw, 82px);
+
+  background: var(--contact-background);
+  color: var(--contact-text);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.container {
+  width: min(100% - 96px, 1640px);
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.92fr)
+    minmax(430px, 0.98fr);
+
+  align-items: start;
+  gap: clamp(58px, 6vw, 110px);
+}
+
+/* =========================================================
+   FORM COLUMN
+   ========================================================= */
+
+.formColumn {
+  min-width: 0;
+}
+
+.formHeading {
+  margin:
+    0
+    0
+    clamp(44px, 4vw, 64px);
+
+  color: var(--contact-accent);
+
+  font-size: clamp(48px, 4vw, 68px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-align: center;
+}
+
+.contactForm {
+  width: 100%;
+}
+
+.formField {
+  margin-bottom: 16px;
+}
+
+.fieldLabel {
+  display: block;
+  margin: 0 0 7px;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.textInput,
+.selectInput,
+.textareaInput {
+  width: 100%;
+
+  border:
+    1px solid
+    var(--contact-input-border);
+
+  border-radius: 0;
+
+  background:
+    var(--contact-input-background);
+
+  color: #111111;
+
+  font: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.textInput,
+.selectInput {
+  min-height: 39px;
+  padding: 7px 11px;
+}
+
+.textareaInput {
+  min-height: 68px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+
+.textInput:focus,
+.selectInput:focus,
+.textareaInput:focus,
+.phoneInput:focus,
+.dialCodeSelect:focus {
+  outline: none;
+
+  border-color:
+    var(--contact-accent);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(18, 187, 181, 0.13);
+}
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+.phoneField {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+
+  border:
+    1px solid
+    var(--contact-input-border);
+
+  background:
+    var(--contact-input-background);
+}
+
+.dialCodeSelect,
+.phoneInput {
+  min-height: 39px;
+  border: 0;
+  background: transparent;
+  color: #111111;
+  font: inherit;
+  font-size: 14px;
+}
+
+.dialCodeSelect {
+  padding: 6px 7px;
+  border-right:
+    1px solid
+    var(--contact-input-border);
+}
+
+.phoneInput {
+  width: 100%;
+  padding: 7px 11px;
+}
+
+.phoneInput:focus,
+.dialCodeSelect:focus {
+  box-shadow: none;
+}
+
+/* =========================================================
+   CHECKBOXES
+   ========================================================= */
+
+.servicesFieldset {
+  min-width: 0;
+  margin: 0 0 17px;
+  padding: 0;
+  border: 0;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.checkboxLabel {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #151515;
+
+  font-size: clamp(16px, 1.25vw, 22px);
+  font-weight: 400;
+  line-height: 1.25;
+
+  cursor: pointer;
+}
+
+.checkboxInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.customCheckbox {
+  position: relative;
+
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+
+  border: 1px solid #879397;
+  background: #ffffff;
+}
+
+.checkboxInput:checked + .customCheckbox {
+  border-color: var(--contact-accent);
+  background: var(--contact-accent);
+}
+
+.checkboxInput:checked
+  + .customCheckbox::after {
+  content: "";
+
+  position: absolute;
+  top: 2px;
+  left: 4px;
+
+  width: 4px;
+  height: 7px;
+
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+
+  transform: rotate(45deg);
+}
+
+.checkboxInput:focus-visible
+  + .customCheckbox {
+  outline:
+    3px solid
+    rgba(18, 187, 181, 0.22);
+
+  outline-offset: 2px;
+}
+
+.fieldError {
+  margin: 8px 0 0;
+  color: #bb2525;
+  font-size: 13px;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.submitButton {
+  min-width: 91px;
+  min-height: 42px;
+
+  margin-top: 2px;
+  padding: 0 18px;
+
+  border: 2px solid var(--contact-accent);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--contact-accent);
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: transparent;
+  color: var(--contact-accent);
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.submitButton:focus-visible {
+  outline:
+    3px solid
+    rgba(18, 187, 181, 0.28);
+
+  outline-offset: 4px;
+}
+
+.formMessage {
+  margin: 14px 0 0;
+  font-size: 14px;
+}
+
+.formMessageSuccess {
+  color: #087a66;
+}
+
+.formMessageError {
+  color: #bb2525;
+}
+
+/* =========================================================
+   RIGHT INFORMATION COLUMN
+   ========================================================= */
+
+.informationColumn {
+  position: relative;
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.decorationWrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.decorativeArc {
+  width: 340px;
+  height: auto;
+  flex: 0 0 auto;
+  display: block;
+
+  margin-top: -12px;
+  margin-right: -24px;
+
+  color: #080808;
+}
+
+.infoCards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(34px, 3vw, 56px);
+}
+
+.infoCard {
+  position: relative;
+  padding: 5px 32px 4px 0;
+}
+
+.infoCardContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.infoIcon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+
+  margin-top: 8px;
+
+  color: #076b9c;
+}
+
+.infoIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.infoText {
+  min-width: 0;
+}
+
+.infoTitle {
+  margin: 0;
+
+  color: var(--contact-dark);
+
+  font-size: clamp(43px, 3.6vw, 62px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.052em;
+
+  background:
+    linear-gradient(
+      100deg,
+      #07566e 0%,
+      #087d8c 52%,
+      #14bbb5 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.infoDescription {
+  max-width: 510px;
+  margin: 18px 0 0;
+
+  color: #101010;
+
+  font-size: clamp(23px, 1.9vw, 32px);
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -0.038em;
+}
+
+.learnMoreButton {
+  min-width: 87px;
+  min-height: 34px;
+
+  margin-top: 16px;
+  padding: 0 16px;
+
+  border: 2px solid var(--contact-accent);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--contact-accent);
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.learnMoreButton:hover {
+  background: transparent;
+  color: var(--contact-accent);
+  transform: translateY(-2px);
+}
+
+.infoAccentLine {
+  position: absolute;
+  top: 12%;
+  right: 0;
+
+  width: 2px;
+  height: 76%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      var(--contact-accent) 20%,
+      var(--contact-accent) 80%,
+      transparent
+    );
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .container {
+    width: min(100% - 48px, 900px);
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+
+  .formHeading {
+    text-align: left;
+  }
+
+  .informationColumn {
+    padding-top: 0;
+  }
+
+  .decorationWrapper {
+    display: none;
+  }
+
+  .infoCards {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 40px;
+  }
+
+  .infoTitle {
+    font-size: clamp(40px, 6vw, 54px);
+  }
+
+  .infoDescription {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .container {
+    width: min(100% - 32px, 560px);
+    gap: 62px;
+  }
+
+  .formHeading {
+    margin-bottom: 40px;
+    font-size: clamp(42px, 12vw, 54px);
+  }
+
+  .formField {
+    margin-bottom: 15px;
+  }
+
+  .textInput,
+  .selectInput {
+    min-height: 46px;
+  }
+
+  .phoneField {
+    grid-template-columns: 94px minmax(0, 1fr);
+  }
+
+  .dialCodeSelect,
+  .phoneInput {
+    min-height: 46px;
+  }
+
+  .checkboxLabel {
+    font-size: 18px;
+  }
+
+  .textareaInput {
+    min-height: 105px;
+  }
+
+  .submitButton {
+    min-width: 108px;
+    min-height: 48px;
+  }
+
+  .infoCards {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .infoCard {
+    padding-right: 20px;
+  }
+
+  .infoTitle {
+    font-size: clamp(39px, 12vw, 51px);
+  }
+
+  .infoDescription {
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .section {
+  --contact-background: #080808;
+  --contact-text: #ffffff;
+  --contact-input-background: #151515;
+  --contact-input-border:
+    rgba(255, 255, 255, 0.25);
+}
+
+:global(html.dark) .fieldLabel,
+:global(html.dark) .checkboxLabel,
+:global(html.dark) .infoDescription {
+  color: #ffffff;
+}
+
+:global(html.dark) .textInput,
+:global(html.dark) .selectInput,
+:global(html.dark) .textareaInput,
+:global(html.dark) .phoneField,
+:global(html.dark) .dialCodeSelect,
+:global(html.dark) .phoneInput {
+  color: #ffffff;
+}
+
+:global(html.dark) .textInput:focus,
+:global(html.dark) .selectInput:focus,
+:global(html.dark) .textareaInput:focus {
+  background: #111111;
+}
+
+:global(html.dark) .customCheckbox {
+  background: #111111;
+}
+
+:global(html.dark) .decorativeArc {
+  color: #ffffff;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .textInput,
+  .selectInput,
+  .textareaInput,
+  .submitButton,
+  .learnMoreButton {
+    transition: none;
+  }
+}
+@media (min-width: 1600px) {
+  .decorationWrapper {
+    height: 335px;
+  }
+
+  .decorativeArc {
+    width: 382px;
+    margin-top: -18px;
+    margin-right: -34px;
+  }
+}
+@media (max-width: 1300px) {
+  .decorationWrapper {
+    height: 250px;
+  }
+
+  .decorativeArc {
+    width: 300px;
+    margin-right: -18px;
+  }
+}
+@media (max-width: 1050px) {
+  .decorationWrapper {
+    display: none;
+  }
+}

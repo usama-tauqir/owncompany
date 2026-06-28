@@ -1,0 +1,405 @@
+.servicesSection {
+  --services-accent: #13bbb5;
+  --services-background: #010505;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(86px, 8vw, 126px) 0
+    clamp(62px, 6vw, 92px);
+  background: var(--services-background);
+  color: #ffffff;
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   BACKGROUND EFFECT
+   ========================================================= */
+
+.backgroundGlow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.backgroundGlow::before {
+  content: "";
+  position: absolute;
+  top: -12%;
+  left: 50%;
+  width: min(1100px, 78vw);
+  height: 850px;
+  border-radius: 50%;
+  background: rgba(0, 117, 104, 0.3);
+  filter: blur(150px);
+  transform: translateX(-50%);
+}
+
+.backgroundGlow::after {
+  content: "";
+  position: absolute;
+  right: 6%;
+  bottom: -30%;
+  width: 650px;
+  height: 550px;
+  border-radius: 50%;
+  background: rgba(0, 82, 76, 0.2);
+  filter: blur(150px);
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 80px, 1720px);
+  margin-inline: auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sectionHeader {
+  margin-bottom: clamp(68px, 6vw, 92px);
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--services-accent);
+  font-size: clamp(16px, 1.15vw, 21px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(45px, 4vw, 68px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(22px, 2vw, 38px);
+}
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.serviceCard {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1.25 / 1;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 9px;
+  display: block;
+  background: #142423;
+  color: #ffffff;
+  text-decoration: none;
+  animation: serviceCardReveal 450ms ease both;
+}
+
+.serviceImage {
+  z-index: -3;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 400ms ease;
+}
+
+.cardDarkOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 10, 14, 0.44) 0%,
+      rgba(4, 10, 14, 0.27) 48%,
+      rgba(4, 10, 14, 0.58) 100%
+    );
+  transition: background-color 400ms ease;
+}
+
+.cardHoverGradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 201, 186, 0.15) 0%,
+      rgba(0, 54, 52, 0.02) 58%,
+      rgba(0, 0, 0, 0.12) 100%
+    );
+  opacity: 0;
+  transform: scale(1.1);
+  transition:
+    opacity 400ms ease,
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.serviceTitle {
+  position: relative;
+  z-index: 3;
+  max-width: 92%;
+  margin: 0;
+  padding: clamp(27px, 2vw, 34px);
+  color: #ffffff;
+  font-size: clamp(25px, 1.75vw, 34px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+  transition: transform 350ms ease;
+}
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.08);
+  filter: saturate(1.08);
+}
+
+.serviceCard:hover .cardDarkOverlay {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.serviceCard:hover .cardHoverGradient {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.serviceCard:hover .serviceTitle {
+  transform: translateY(-3px);
+}
+
+.serviceCard:focus-visible {
+  outline: 3px solid var(--services-accent);
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   VIEW MORE BUTTON
+   ========================================================= */
+
+.buttonWrapper {
+  margin-top: clamp(48px, 4vw, 64px);
+  display: flex;
+  justify-content: center;
+}
+
+.viewMoreButton {
+  min-width: 338px;
+  min-height: 87px;
+  padding: 0 38px;
+  border: 1.5px solid var(--services-accent);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background: rgba(0, 0, 0, 0.14);
+  color: #ffffff;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.viewMoreButton:hover {
+  background: var(--services-accent);
+  color: #001b19;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(0, 187, 178, 0.2);
+}
+
+.viewMoreButton:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 5px;
+}
+
+.arrowIcon {
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  transition: transform 350ms ease;
+}
+
+.arrowIconExpanded {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes serviceCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .container {
+    width: min(100% - 56px, 1720px);
+  }
+
+  .servicesGrid {
+    gap: 24px;
+  }
+
+  .serviceCard {
+    min-height: 260px;
+  }
+
+  .serviceTitle {
+    font-size: clamp(22px, 1.8vw, 29px);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .servicesSection {
+    padding-top: 80px;
+  }
+
+  .container {
+    width: min(100% - 48px, 900px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 55px;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .serviceCard {
+    min-height: 300px;
+  }
+
+  .serviceTitle {
+    font-size: 29px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .servicesSection {
+    padding: 70px 0 60px;
+  }
+
+  .container {
+    width: min(100% - 32px, 560px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 42px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 15px;
+  }
+
+  .heading {
+    font-size: clamp(39px, 12vw, 50px);
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .serviceCard {
+    min-height: 300px;
+    aspect-ratio: 1.18 / 1;
+  }
+
+  .serviceTitle {
+    padding: 27px;
+    font-size: 28px;
+  }
+
+  .buttonWrapper {
+    margin-top: 40px;
+  }
+
+  .viewMoreButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 68px;
+    padding-inline: 25px;
+    gap: 18px;
+    font-size: 18px;
+  }
+
+  .arrowIcon {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard {
+    animation: none;
+  }
+
+  .serviceImage,
+  .cardHoverGradient,
+  .serviceTitle,
+  .viewMoreButton,
+  .arrowIcon {
+    transition: none;
+  }
+}

@@ -810,3 +810,212 @@
     display: none;
   }
 }
+
+/* =========================================================
+   ANIMATED LOGO
+   ========================================================= */
+
+.navbarLogoLink {
+  position: relative;
+  width: 182px;
+  height: 50px;
+  flex: 0 0 182px;
+  display: block;
+  overflow: hidden;
+  color: #12b8b2;
+  text-decoration: none;
+}
+
+.logoAnimationFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.logoInsignia {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 39px;
+  height: 46px;
+  display: block;
+  color: #12b8b2;
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+  transform-origin: center;
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.logoWordmark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 176px;
+  height: auto;
+  display: block;
+  color: #12b8b2;
+  opacity: 0;
+  transform: translate3d(-105%, -50%, 0);
+  transform-origin: center;
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 350ms ease;
+}
+
+.navbarLogoLink:hover .logoInsignia,
+.navbarLogoLink:focus-visible .logoInsignia {
+  opacity: 0;
+  transform: translate3d(42px, -50%, 0) scale(0.9);
+}
+
+.navbarLogoLink:hover .logoWordmark,
+.navbarLogoLink:focus-visible .logoWordmark {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+}
+
+.navbarLogoLink:focus-visible {
+  outline: 2px solid #12b8b2;
+  outline-offset: 4px;
+}
+@media (max-width: 991px) {
+  .navbarLogoLink {
+    width: 42px;
+    height: 48px;
+    flex-basis: 42px;
+  }
+
+  .logoInsignia {
+    width: 38px;
+    height: 44px;
+  }
+
+  .logoWordmark {
+    display: none;
+  }
+
+  .navbarLogoLink:hover .logoInsignia,
+  .navbarLogoLink:focus-visible .logoInsignia {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+/* =========================================================
+   NAVBAR DARK MODE
+   ========================================================= */
+
+:global(html.dark) .header {
+  background: #080808;
+  color: #ffffff;
+  border-top-color: rgba(255, 255, 255, 0.14);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(html.dark) .headerScrolled {
+  background: rgba(8, 8, 8, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+:global(html.dark) .megaMenuTrigger {
+  color: #ffffff;
+}
+
+:global(html.dark) .globalSelectorTrigger {
+  color: #ffffff;
+}
+
+:global(html.dark) .logoWordmark {
+  color: #ffffff;
+}
+
+:global(html.dark) .themeToggle {
+  background: #ffffff;
+}
+
+:global(html.dark) .themeToggleKnob {
+  background: #080808;
+}
+
+:global(html.dark) .navbarCTASecondary {
+  background: transparent;
+  color: #12bbb5;
+}
+
+:global(html.dark) .navbarCTASecondary:hover {
+  background: #12bbb5;
+  color: #ffffff;
+}
+
+:global(html.dark) .globalSelectorMenu {
+  background: #111111;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .globalSelectorLink {
+  color: #ffffff;
+}
+
+:global(html.dark) .globalSelectorLink:hover {
+  background: #202020;
+}
+
+:global(html.dark) .megaMenu {
+  background: #0d0d0d;
+  color: #ffffff;
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(html.dark) .megaMenuTitle,
+:global(html.dark) .capabilityGroupTitle,
+:global(html.dark) .industryLink,
+:global(html.dark) .simpleListLink {
+  color: #ffffff;
+}
+
+:global(html.dark) .megaMenuLink {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+:global(html.dark) .megaMenuLink:hover {
+  color: #ffffff;
+}
+
+:global(html.dark) .mobileMenuButton {
+  color: #ffffff;
+}
+
+:global(html.dark) .mobileMenuLineTop,
+:global(html.dark) .mobileMenuLineMiddle,
+:global(html.dark) .mobileMenuLineBottom {
+  background: #ffffff;
+}
+
+:global(html.dark) .mobileDrawer {
+  background: #0d0d0d;
+  color: #ffffff;
+}
+
+:global(html.dark) .mobileMenu {
+  background: #0d0d0d;
+  color: #ffffff;
+}
+
+:global(html.dark) .mobileAccordionLinks a {
+  color: #ffffff;
+}
+
+:global(html.dark) :global(.mobile-accordion__item) {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+:global(html.dark) :global(.mobile-accordion__button) {
+  color: #ffffff;
+}

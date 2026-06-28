@@ -1,0 +1,510 @@
+.heroSection {
+  --hero-accent: #12bbb5;
+  --navbar-height: 84px;
+
+  position: sticky;
+  isolation: isolate;
+  width: 100%;
+  min-height: calc(100svh - var(--navbar-height));
+  overflow: hidden;
+  background: #071a2f;
+  color: #ffffff;
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   VIDEO BACKGROUND
+   ========================================================= */
+
+.backgroundVideo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 24, 50, 0.84) 0%,
+      rgba(8, 24, 50, 0.71) 38%,
+      rgba(8, 24, 50, 0.43) 70%,
+      rgba(8, 24, 50, 0.28) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 19, 39, 0.2) 0%,
+      rgba(5, 19, 39, 0.2) 55%,
+      rgba(5, 19, 39, 0.6) 100%
+    );
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: calc(100svh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1820px;
+  margin-inline: auto;
+  padding:
+    clamp(62px, 7vh, 94px)
+    clamp(40px, 5vw, 92px)
+    clamp(45px, 6vh, 72px);
+}
+
+.heroCopy {
+  width: min(1110px, 78%);
+}
+
+.heroHeading {
+  max-width: 1050px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(52px, 4.25vw, 78px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.048em;
+  text-wrap: balance;
+
+  animation: heroFadeUp 700ms ease both;
+}
+
+.heroDescription {
+  max-width: 1110px;
+  margin: 14px 0 0;
+  color: #ffffff;
+  font-size: clamp(27px, 2.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+
+  animation: heroFadeUp 700ms 100ms ease both;
+}
+
+.primaryButton {
+  min-width: 177px;
+  min-height: 64px;
+  margin-top: 50px;
+  padding: 0 30px;
+  border: 2px solid var(--hero-accent);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-accent);
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+
+  animation: heroFadeUp 700ms 180ms ease both;
+}
+
+.primaryButton:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #0aaca7;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.primaryButton:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   FEATURED PUBLICATIONS
+   ========================================================= */
+
+.featuredSection {
+  width: min(610px, 100%);
+  margin-top: 44px;
+
+  animation: heroFadeUp 700ms 260ms ease both;
+}
+
+.featuredHeading {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(26px, 2vw, 34px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.featuredGrid {
+  width: 100%;
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  align-items: center;
+  column-gap: 42px;
+  row-gap: 25px;
+}
+
+.publicationLink {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 1;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.publicationLink:hover {
+  opacity: 0.72;
+  transform: translateY(-2px);
+}
+
+.publicationLink:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+.publicationLogo {
+  width: auto;
+  max-width: 142px;
+  height: auto;
+  max-height: 48px;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+
+  /*
+   * Converts dark or coloured logo files to white,
+   * matching the reference hero.
+   */
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================================
+   RIGHT-SIDE FLOATING CONTACT BUTTON
+   ========================================================= */
+
+.floatingContactButton {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 10;
+
+  width: 50px;
+  height: 176px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px 0 0 12px;
+  background: #12bbb5;
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+
+  transform: translateY(-50%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  transition:
+    width 180ms ease,
+    background-color 180ms ease;
+}
+
+.floatingContactButton span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.floatingContactButton:hover {
+  width: 55px;
+  background: #0da9a4;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1900px) {
+  .heroContent {
+    max-width: 1920px;
+  }
+
+  .heroCopy {
+    width: min(1180px, 76%);
+  }
+
+  .featuredSection {
+    width: 650px;
+  }
+}
+
+/* =========================================================
+   NORMAL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1500px) {
+  .heroContent {
+    padding-inline: 64px;
+  }
+
+  .heroCopy {
+    width: 82%;
+  }
+
+  .heroHeading {
+    font-size: clamp(50px, 4.5vw, 68px);
+  }
+
+  .heroDescription {
+    font-size: clamp(25px, 2.35vw, 35px);
+  }
+}
+
+/* =========================================================
+   SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .heroContent {
+    padding-inline: 48px;
+  }
+
+  .heroCopy {
+    width: 88%;
+  }
+
+  .heroHeading {
+    font-size: clamp(46px, 5vw, 61px);
+  }
+
+  .heroDescription {
+    max-width: 900px;
+    font-size: clamp(23px, 2.7vw, 32px);
+  }
+
+  .primaryButton {
+    min-height: 58px;
+    margin-top: 38px;
+    font-size: 17px;
+  }
+
+  .featuredSection {
+    margin-top: 38px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .heroSection {
+    --navbar-height: 72px;
+  }
+
+  .contentContainer {
+    min-height: calc(100svh - var(--navbar-height));
+    align-items: flex-end;
+  }
+
+  .heroContent {
+    padding:
+      100px
+      32px
+      55px;
+  }
+
+  .heroCopy {
+    width: 100%;
+  }
+
+  .heroHeading {
+    max-width: 790px;
+    font-size: clamp(43px, 7vw, 62px);
+  }
+
+  .heroDescription {
+    max-width: 800px;
+    font-size: clamp(22px, 3.7vw, 31px);
+  }
+
+  .featuredGrid {
+    max-width: 590px;
+  }
+
+  .floatingContactButton {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .heroSection {
+    min-height: auto;
+  }
+
+  .backgroundVideo {
+    object-position: 60% center;
+  }
+
+  .contentContainer {
+    min-height: 760px;
+    align-items: center;
+  }
+
+  .heroContent {
+    padding:
+      82px
+      20px
+      46px;
+  }
+
+  .heroHeading {
+    font-size: clamp(40px, 12vw, 53px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+  }
+
+  .heroDescription {
+    margin-top: 20px;
+    font-size: 21px;
+    line-height: 1.42;
+  }
+
+  .primaryButton {
+    min-width: 164px;
+    min-height: 55px;
+    margin-top: 33px;
+    padding-inline: 24px;
+    font-size: 17px;
+  }
+
+  .featuredSection {
+    margin-top: 44px;
+  }
+
+  .featuredHeading {
+    font-size: 26px;
+  }
+
+  .featuredGrid {
+    margin-top: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 26px;
+    row-gap: 22px;
+  }
+
+  .publicationLogo {
+    max-width: 125px;
+    max-height: 40px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .heroContent {
+    padding-inline: 17px;
+  }
+
+  .heroHeading {
+    font-size: 39px;
+  }
+
+  .heroDescription {
+    font-size: 19px;
+  }
+
+  .featuredGrid {
+    column-gap: 18px;
+  }
+
+  .publicationLogo {
+    max-width: 112px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroHeading,
+  .heroDescription,
+  .primaryButton,
+  .featuredSection {
+    animation: none;
+  }
+
+  .primaryButton,
+  .publicationLink,
+  .floatingContactButton {
+    transition: none;
+  }
+}

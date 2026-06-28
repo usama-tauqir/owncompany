@@ -1,0 +1,219 @@
+.section {
+  --marquee-background: #ffffff;
+  --marquee-duration: 35s;
+  --logo-gap: clamp(42px, 4vw, 78px);
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  background: var(--marquee-background);
+}
+
+.marqueeContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+
+/* =========================================================
+   MARQUEE ROW
+   ========================================================= */
+
+.marqueeRow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/*
+  These gradients create the soft white fading effect visible
+  on both sides of the reference section.
+*/
+
+.marqueeRow::before,
+.marqueeRow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: clamp(45px, 8vw, 160px);
+  pointer-events: none;
+}
+
+.marqueeRow::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--marquee-background) 0%,
+    rgba(255, 255, 255, 0.92) 32%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.marqueeRow::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    var(--marquee-background) 0%,
+    rgba(255, 255, 255, 0.92) 32%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* =========================================================
+   MOVING TRACK
+   ========================================================= */
+
+.marqueeTrack {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  animation: marqueeSlide var(--marquee-duration) linear infinite;
+}
+
+.marqueeTrackReverse {
+  animation-direction: reverse;
+}
+
+.logoGroup {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  padding-right: var(--logo-gap);
+}
+
+/* =========================================================
+   LOGO ITEM
+   ========================================================= */
+
+.logoItem {
+  width: clamp(125px, 9.5vw, 190px);
+  height: 100px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clientLogo {
+  width: 100%;
+  max-width: 180px;
+  height: 76px;
+  display: block;
+  object-fit: contain;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes marqueeSlide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+/*
+  Keep this section white because many client logos are
+  specifically prepared for a white background.
+*/
+
+:global(html.dark) .section {
+  --marquee-background: #ffffff;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .section {
+    --marquee-duration: 30s;
+    --logo-gap: 42px;
+
+    padding: 20px 0;
+  }
+
+  .marqueeContainer {
+    gap: 8px;
+  }
+
+  .logoItem {
+    width: 150px;
+    height: 88px;
+  }
+
+  .clientLogo {
+    max-width: 145px;
+    height: 65px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .section {
+    --marquee-duration: 25s;
+    --logo-gap: 30px;
+
+    padding: 16px 0;
+  }
+
+  .marqueeContainer {
+    gap: 4px;
+  }
+
+  .logoItem {
+    width: 120px;
+    height: 74px;
+  }
+
+  .clientLogo {
+    max-width: 115px;
+    height: 52px;
+  }
+
+  .marqueeRow::before,
+  .marqueeRow::after {
+    width: 48px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeRow {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .marqueeRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marqueeTrack {
+    animation: none;
+  }
+
+  .marqueeTrack > .logoGroup:last-child {
+    display: none;
+  }
+}

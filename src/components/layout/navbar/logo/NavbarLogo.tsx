@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+
 import LogoIcon from "./LogoIcon";
+import LogoText from "./LogoText";
+
 import styles from "../Navbar.module.css";
 
-export interface NavbarLogoProps {
+interface NavbarLogoProps {
   onNavigate?: () => void;
 }
 
@@ -14,11 +17,15 @@ export default function NavbarLogo({
   return (
     <Link
       href="/"
-      className={styles.navbarLogo}
+      className={styles.navbarLogoLink}
       aria-label="Homepage"
       onClick={onNavigate}
     >
-      <LogoIcon />
+      <span className={styles.logoAnimationFrame}>
+        <LogoIcon className={styles.logoInsignia} />
+
+        <LogoText className={styles.logoWordmark} />
+      </span>
     </Link>
   );
 }
