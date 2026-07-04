@@ -1,0 +1,166 @@
+.serviceCta {
+  position: relative;
+  z-index: 5;
+
+  width: 100%;
+
+  background: #ffffff;
+  color: #ffffff;
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.serviceCta,
+.serviceCta *,
+.serviceCta *::before,
+.serviceCta *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(100% - 96px, 1720px);
+  margin-inline: auto;
+
+  padding: 64px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primaryButton {
+  min-width: 280px;
+  min-height: 64px;
+
+  padding: 0 34px;
+
+  border: 2px solid #13bbb5;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #13bbb5;
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.primaryButton:hover {
+  background: #ffffff;
+  color: #13bbb5;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 36px
+    rgba(19, 187, 181, 0.28);
+}
+
+.primaryButton:focus-visible {
+  outline:
+    3px solid
+    rgba(19, 187, 181, 0.4);
+
+  outline-offset: 5px;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .serviceCta {
+  background: #080808;
+}
+
+/* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .container {
+    width: 90vw;
+
+    padding-top: 3.35vw;
+    padding-bottom: 3.35vw;
+  }
+
+  .primaryButton {
+    min-width: 14.8vw;
+    min-height: 3.35vw;
+
+    padding-inline: 1.8vw;
+
+    border-width: 0.08vw;
+
+    font-size: 1.05vw;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .container {
+    width: min(100% - 48px, 860px);
+
+    padding: 54px 0;
+  }
+
+  .primaryButton {
+    min-width: 260px;
+    min-height: 60px;
+
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .container {
+    width: min(100% - 32px, 540px);
+
+    padding: 46px 0;
+  }
+
+  .primaryButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 58px;
+
+    padding-inline: 22px;
+
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton {
+    transition: none;
+  }
+}
