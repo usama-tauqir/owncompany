@@ -45,7 +45,10 @@ export default function ServicesSection() {
           </h2>
         </header>
 
-        <div className={styles.servicesGrid}>
+        <div
+          id="services-grid"
+          className={styles.servicesGrid}
+        >
           {visibleServices.map((service) => (
             <ServiceCard
               key={service.href}
@@ -71,7 +74,9 @@ export default function ServicesSection() {
             <svg
               className={[
                 styles.arrowIcon,
-                expanded ? styles.arrowIconExpanded : "",
+                expanded
+                  ? styles.arrowIconExpanded
+                  : "",
               ]
                 .filter(Boolean)
                 .join(" ")}

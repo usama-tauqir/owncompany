@@ -8,9 +8,9 @@
   overflow: hidden;
 
   padding:
-    clamp(50px, 5vw, 74px)
+    clamp(64px, 5.2vw, 96px)
     0
-    clamp(30px, 4vw, 58px);
+    clamp(48px, 4vw, 76px);
 
   background: var(--leadership-background);
   color: var(--leadership-text);
@@ -42,10 +42,10 @@
 
   color: var(--leadership-text);
 
-  font-size: clamp(48px, 4.2vw, 68px);
+  font-size: clamp(54px, 4.25vw, 76px);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
 }
 
 /* =========================================================
@@ -121,7 +121,7 @@
 
 .sliderViewport {
   width: 100%;
-  margin-top: clamp(65px, 6vw, 95px);
+  margin-top: clamp(62px, 5.8vw, 96px);
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -150,8 +150,8 @@
   column-gap: 1px;
 
   /*
-   * This large leading space matches the reference where
-   * the first portrait begins near the middle of the screen.
+   * Large leading space like Devsinc:
+   * first leader starts around the center area.
    */
   padding-left: clamp(420px, 40vw, 760px);
   padding-right: clamp(50px, 5vw, 100px);
@@ -197,10 +197,7 @@
    ========================================================= */
 
 .leaderInformation {
-  padding:
-    18px
-    0
-    0;
+  padding: 18px 0 0;
 }
 
 .leaderName {
@@ -268,12 +265,112 @@
 }
 
 /* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .leadershipSection {
+    padding-top: 5.2vw;
+    padding-bottom: 4vw;
+  }
+
+  .sectionHeader {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .heading {
+    font-size: 4.25vw;
+  }
+
+  .navigation {
+    gap: 0.75vw;
+  }
+
+  .navigationButton {
+    width: 2.65vw;
+    height: 2.65vw;
+    flex-basis: 2.65vw;
+
+    border-width: 0.06vw;
+  }
+
+  .navigationButton svg {
+    width: 1.2vw;
+    height: 1.2vw;
+  }
+
+  .sliderViewport {
+    margin-top: 5.8vw;
+  }
+
+  .sliderTrack {
+    column-gap: 0.06vw;
+
+    padding-left: 40vw;
+    padding-right: 5vw;
+  }
+
+  .leaderCard {
+    width: 24.4vw;
+    flex-basis: 24.4vw;
+  }
+
+  .leaderInformation {
+    padding-top: 0.95vw;
+  }
+
+  .leaderName {
+    font-size: 2.7vw;
+  }
+
+  .leaderRole {
+    margin-top: 1.2vw;
+
+    font-size: 1.5vw;
+  }
+
+  .linkedinLink {
+    width: 1.4vw;
+    height: 1.4vw;
+
+    margin-top: 0.6vw;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1800px) and (max-width: 2399px) {
+  .sectionHeader {
+    width: min(100% - 96px, 1720px);
+  }
+
+  .sliderTrack {
+    padding-left: clamp(520px, 40vw, 760px);
+    padding-right: clamp(70px, 5vw, 110px);
+  }
+}
+
+/* =========================================================
    LAPTOP
    ========================================================= */
 
 @media (max-width: 1350px) {
+  .leadershipSection {
+    padding:
+      62px
+      0
+      52px;
+  }
+
   .sectionHeader {
     width: min(100% - 64px, 1240px);
+  }
+
+  .heading {
+    font-size: clamp(46px, 4.2vw, 62px);
   }
 
   .sliderTrack {
@@ -287,6 +384,10 @@
 
   .leaderName {
     font-size: 40px;
+  }
+
+  .leaderRole {
+    font-size: 23px;
   }
 }
 

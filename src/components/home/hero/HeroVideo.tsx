@@ -8,7 +8,7 @@ export default function HeroVideo() {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster="/images/home/hero/hero-poster.jpg"
       aria-hidden="true"
       tabIndex={-1}

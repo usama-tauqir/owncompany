@@ -82,7 +82,10 @@ export default function FeaturedPublications() {
               width={publication.width}
               height={publication.height}
               className={styles.publicationLogo}
-              sizes="140px"
+              sizes="
+                (max-width: 640px) 120px,
+                8vw
+              "
             />
           </a>
         ))}

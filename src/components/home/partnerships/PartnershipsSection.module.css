@@ -6,10 +6,11 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+
   padding:
-    clamp(14px, 2vw, 30px)
+    clamp(64px, 5.2vw, 96px)
     0
-    clamp(20px, 3vw, 44px);
+    clamp(48px, 4vw, 78px);
 
   background: var(--partnership-background);
   color: var(--partnership-text);
@@ -22,8 +23,12 @@
     sans-serif;
 }
 
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
 .container {
-  width: min(100% - 88px, 1716px);
+  width: min(100% - 96px, 1720px);
   margin-inline: auto;
 }
 
@@ -32,16 +37,20 @@
    ========================================================= */
 
 .heading {
+  max-width: 1260px;
+
   margin:
     0
     auto
-    clamp(84px, 6vw, 110px);
+    clamp(64px, 5.8vw, 96px);
 
   color: var(--partnership-text);
-  font-size: clamp(48px, 4.1vw, 68px);
+
+  font-size: clamp(54px, 4.25vw, 76px);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+
   text-align: center;
   text-wrap: balance;
 }
@@ -52,13 +61,13 @@
 
 .partnershipsGrid {
   width: 100%;
+
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
-  border-top: 1px solid var(--partnership-border);
-  border-right: 1px solid var(--partnership-border);
-  border-bottom: 1px solid var(--partnership-border);
-  border-left: 1px solid var(--partnership-border);
+  border:
+    1px solid
+    var(--partnership-border);
 }
 
 /* =========================================================
@@ -67,15 +76,19 @@
 
 .partnerItem {
   position: relative;
+
   min-width: 0;
-  min-height: 116px;
-  padding: 18px 28px;
+  min-height: 122px;
+
+  padding: 20px 30px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-right: 1px solid var(--partnership-border);
+  border-right:
+    1px solid
+    var(--partnership-border);
 }
 
 .partnerItem:last-child {
@@ -88,12 +101,14 @@
 
 .partnerImage {
   width: auto;
-  max-width: 176px;
+  max-width: 178px;
   height: auto;
-  max-height: 86px;
+  max-height: 88px;
 
   display: block;
+
   object-fit: contain;
+  object-position: center;
 
   transition:
     transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -105,32 +120,142 @@
   transform: translateY(-3px) scale(1.025);
 }
 
-/* Microsoft is naturally wider and shorter */
+/* Microsoft */
 
 .partnerItem:first-child .partnerImage {
-  max-width: 160px;
-  max-height: 50px;
+  max-width: 162px;
+  max-height: 52px;
 }
 
-/* Salesforce cloud logo */
+/* Salesforce */
 
 .partnerItem:nth-child(2) .partnerImage {
-  max-width: 135px;
+  max-width: 136px;
   max-height: 88px;
 }
 
 /* Shopify Plus */
 
 .partnerItem:nth-child(3) .partnerImage {
-  max-width: 160px;
-  max-height: 68px;
+  max-width: 162px;
+  max-height: 70px;
 }
 
 /* AWS */
 
 .partnerItem:nth-child(4) .partnerImage {
-  max-width: 145px;
+  max-width: 146px;
   max-height: 88px;
+}
+
+/* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .partnershipsSection {
+    padding-top: 5.2vw;
+    padding-bottom: 4vw;
+  }
+
+  .container {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .heading {
+    max-width: 72vw;
+
+    margin-bottom: 5.8vw;
+
+    font-size: 4.25vw;
+  }
+
+  .partnershipsGrid {
+    border-width: 0.06vw;
+  }
+
+  .partnerItem {
+    min-height: 7.05vw;
+
+    padding:
+      1.15vw
+      1.7vw;
+
+    border-right-width: 0.06vw;
+  }
+
+  .partnerImage {
+    max-width: 9.6vw;
+    max-height: 4.9vw;
+  }
+
+  .partnerItem:first-child .partnerImage {
+    max-width: 8.9vw;
+    max-height: 2.9vw;
+  }
+
+  .partnerItem:nth-child(2) .partnerImage {
+    max-width: 7.4vw;
+    max-height: 4.9vw;
+  }
+
+  .partnerItem:nth-child(3) .partnerImage {
+    max-width: 8.9vw;
+    max-height: 3.9vw;
+  }
+
+  .partnerItem:nth-child(4) .partnerImage {
+    max-width: 8vw;
+    max-height: 4.9vw;
+  }
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .container {
+    width: min(100% - 64px, 1180px);
+  }
+
+  .heading {
+    max-width: 1040px;
+    margin-bottom: 68px;
+
+    font-size: clamp(46px, 4.2vw, 62px);
+  }
+
+  .partnerItem {
+    min-height: 112px;
+    padding: 18px 24px;
+  }
+
+  .partnerImage {
+    max-width: 155px;
+    max-height: 78px;
+  }
+
+  .partnerItem:first-child .partnerImage {
+    max-width: 145px;
+    max-height: 46px;
+  }
+
+  .partnerItem:nth-child(2) .partnerImage {
+    max-width: 122px;
+    max-height: 78px;
+  }
+
+  .partnerItem:nth-child(3) .partnerImage {
+    max-width: 145px;
+    max-height: 60px;
+  }
+
+  .partnerItem:nth-child(4) .partnerImage {
+    max-width: 130px;
+    max-height: 78px;
+  }
 }
 
 /* =========================================================
@@ -138,12 +263,19 @@
    ========================================================= */
 
 @media (max-width: 950px) {
+  .partnershipsSection {
+    padding: 70px 0 56px;
+  }
+
   .container {
     width: min(100% - 48px, 860px);
   }
 
   .heading {
-    margin-bottom: 66px;
+    margin-bottom: 56px;
+
+    font-size: clamp(42px, 7vw, 58px);
+    line-height: 1.07;
   }
 
   .partnershipsGrid {
@@ -151,9 +283,15 @@
   }
 
   .partnerItem {
-    min-height: 140px;
-    border-right: 1px solid var(--partnership-border);
-    border-bottom: 1px solid var(--partnership-border);
+    min-height: 138px;
+
+    border-right:
+      1px solid
+      var(--partnership-border);
+
+    border-bottom:
+      1px solid
+      var(--partnership-border);
   }
 
   .partnerItem:nth-child(2n) {
@@ -171,7 +309,7 @@
 
 @media (max-width: 560px) {
   .partnershipsSection {
-    padding: 48px 0 38px;
+    padding: 58px 0 42px;
   }
 
   .container {
@@ -179,7 +317,8 @@
   }
 
   .heading {
-    margin-bottom: 44px;
+    margin-bottom: 42px;
+
     font-size: clamp(39px, 12vw, 50px);
     line-height: 1.08;
   }
@@ -190,14 +329,22 @@
 
   .partnerItem {
     min-height: 130px;
-    padding: 24px 18px;
+
+    padding:
+      24px
+      18px;
 
     border-right: 0;
-    border-bottom: 1px solid var(--partnership-border);
+
+    border-bottom:
+      1px solid
+      var(--partnership-border);
   }
 
   .partnerItem:nth-child(n + 3) {
-    border-bottom: 1px solid var(--partnership-border);
+    border-bottom:
+      1px solid
+      var(--partnership-border);
   }
 
   .partnerItem:last-child {
@@ -208,6 +355,42 @@
     max-width: 165px;
     max-height: 80px;
   }
+
+  .partnerItem:first-child .partnerImage {
+    max-width: 150px;
+    max-height: 48px;
+  }
+
+  .partnerItem:nth-child(2) .partnerImage {
+    max-width: 130px;
+    max-height: 82px;
+  }
+
+  .partnerItem:nth-child(3) .partnerImage {
+    max-width: 155px;
+    max-height: 64px;
+  }
+
+  .partnerItem:nth-child(4) .partnerImage {
+    max-width: 140px;
+    max-height: 82px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .partnershipsSection {
+  --partnership-background: #080808;
+  --partnership-text: #ffffff;
+  --partnership-border: #13bbb5;
+}
+
+:global(html.dark) .partnerImage {
+  filter:
+    brightness(0)
+    invert(1);
 }
 
 /* =========================================================

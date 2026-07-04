@@ -2,13 +2,17 @@
   --hero-accent: #12bbb5;
   --navbar-height: 84px;
 
-  position: sticky;
+  position: relative;
   isolation: isolate;
+
   width: 100%;
-  min-height: calc(100svh - var(--navbar-height));
+  height: calc(100svh - var(--navbar-height));
+  min-height: 760px;
   overflow: hidden;
+
   background: #071a2f;
   color: #ffffff;
+
   font-family:
     "ITC Avant Garde Gothic",
     "Century Gothic",
@@ -16,7 +20,6 @@
     Arial,
     sans-serif;
 }
-
 
 /* =========================================================
    VIDEO BACKGROUND
@@ -26,11 +29,15 @@
   position: absolute;
   inset: 0;
   z-index: -3;
+
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
   object-position: center center;
+
   pointer-events: none;
 }
 
@@ -38,21 +45,22 @@
   position: absolute;
   inset: 0;
   z-index: -2;
+
   pointer-events: none;
 
   background:
     linear-gradient(
       90deg,
-      rgba(8, 24, 50, 0.84) 0%,
-      rgba(8, 24, 50, 0.71) 38%,
-      rgba(8, 24, 50, 0.43) 70%,
-      rgba(8, 24, 50, 0.28) 100%
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.58) 38%,
+      rgba(0, 0, 0, 0.36) 70%,
+      rgba(0, 0, 0, 0.25) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(5, 19, 39, 0.2) 0%,
-      rgba(5, 19, 39, 0.2) 55%,
-      rgba(5, 19, 39, 0.6) 100%
+      rgba(4, 12, 25, 0.14) 0%,
+      rgba(4, 12, 25, 0.2) 55%,
+      rgba(4, 12, 25, 0.48) 100%
     );
 }
 
@@ -63,68 +71,98 @@
 .contentContainer {
   position: relative;
   z-index: 2;
+
   width: 100%;
-  min-height: calc(100svh - var(--navbar-height));
+  height: 100%;
+
   display: flex;
   align-items: center;
 }
 
 .heroContent {
   width: 100%;
-  max-width: 1820px;
-  margin-inline: auto;
   padding:
-    clamp(62px, 7vh, 94px)
-    clamp(40px, 5vw, 92px)
-    clamp(45px, 6vh, 72px);
+    clamp(62px, 6vh, 100px)
+    0
+    clamp(45px, 6vh, 82px);
+
+  margin-left: 5vw;
 }
 
+/*
+  Important:
+  Do not use small max-width caps here.
+  Devsinc/Webflow keeps the content visually large
+  when browser zoom is changed to 25%.
+*/
+
 .heroCopy {
-  width: min(1110px, 78%);
+  width: min(73vw, 1800px);
 }
 
 .heroHeading {
-  max-width: 1050px;
+  max-width: 72vw;
   margin: 0;
+
   color: #ffffff;
-  font-size: clamp(52px, 4.25vw, 78px);
+
+  font-size: clamp(58px, 4.85vw, 380px);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.048em;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+
   text-wrap: balance;
 
-  animation: heroFadeUp 700ms ease both;
+  animation:
+    heroFadeUp
+    700ms
+    ease
+    both;
 }
 
 .heroDescription {
-  max-width: 1110px;
-  margin: 14px 0 0;
+  max-width: 77vw;
+  margin: clamp(14px, 1vw, 80px) 0 0;
+
   color: #ffffff;
-  font-size: clamp(27px, 2.2vw, 40px);
+
+  font-size: clamp(32px, 2.65vw, 220px);
   font-weight: 400;
-  line-height: 1.38;
-  letter-spacing: -0.035em;
+  line-height: 1.35;
+  letter-spacing: -0.052em;
+
   text-wrap: balance;
 
-  animation: heroFadeUp 700ms 100ms ease both;
+  animation:
+    heroFadeUp
+    700ms
+    100ms
+    ease
+    both;
 }
 
 .primaryButton {
-  min-width: 177px;
-  min-height: 64px;
-  margin-top: 50px;
-  padding: 0 30px;
+  min-width: clamp(62px, 3.25vw, 220px);
+  min-height: clamp(28px, 1.55vw, 105px);
+
+  margin-top: clamp(26px, 2vw, 135px);
+  padding: 0 clamp(15px, 1vw, 70px);
+
   border: 2px solid var(--hero-accent);
   border-radius: 999px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   background: var(--hero-accent);
   color: #ffffff;
-  font-size: 19px;
+
+  font-size: clamp(9px, 0.55vw, 42px);
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
+  white-space: nowrap;
 
   transition:
     background-color 200ms ease,
@@ -133,15 +171,24 @@
     transform 200ms ease,
     box-shadow 200ms ease;
 
-  animation: heroFadeUp 700ms 180ms ease both;
+  animation:
+    heroFadeUp
+    700ms
+    180ms
+    ease
+    both;
 }
 
 .primaryButton:hover {
   border-color: #ffffff;
   background: #ffffff;
   color: #0aaca7;
+
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.2);
 }
 
 .primaryButton:focus-visible {
@@ -154,36 +201,49 @@
    ========================================================= */
 
 .featuredSection {
-  width: min(610px, 100%);
-  margin-top: 44px;
+  width: min(25vw, 720px);
+  margin-top: clamp(30px, 2vw, 140px);
 
-  animation: heroFadeUp 700ms 260ms ease both;
+  animation:
+    heroFadeUp
+    700ms
+    260ms
+    ease
+    both;
 }
 
 .featuredHeading {
   margin: 0;
+
   color: #ffffff;
-  font-size: clamp(26px, 2vw, 34px);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.035em;
+
+  font-size: clamp(34px, 2.45vw, 190px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
 }
 
 .featuredGrid {
   width: 100%;
-  margin-top: 25px;
+  margin-top: clamp(22px, 1.25vw, 90px);
+
   display: grid;
-  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   align-items: center;
-  column-gap: 42px;
-  row-gap: 25px;
+
+  column-gap: clamp(24px, 1.5vw, 110px);
+  row-gap: clamp(14px, 0.85vw, 65px);
 }
 
 .publicationLink {
-  min-height: 44px;
+  min-height: clamp(18px, 1.4vw, 90px);
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
   color: #ffffff;
   text-decoration: none;
   opacity: 1;
@@ -206,63 +266,59 @@
 
 .publicationLogo {
   width: auto;
-  max-width: 142px;
+  max-width: clamp(46px, 4.5vw, 180px);
   height: auto;
-  max-height: 48px;
+  max-height: clamp(16px, 1.45vw, 70px);
+
   display: block;
+
   object-fit: contain;
   object-position: left center;
 
-  /*
-   * Converts dark or coloured logo files to white,
-   * matching the reference hero.
-   */
-  filter: brightness(0) invert(1);
+  filter:
+    brightness(0)
+    invert(1);
 }
 
 /* =========================================================
-   RIGHT-SIDE FLOATING CONTACT BUTTON
+   RIGHT FLOATING BUTTON
    ========================================================= */
 
 .floatingContactButton {
   position: fixed;
   top: 50%;
   right: 0;
-  z-index: 10;
+  z-index: 60;
 
-  width: 50px;
-  height: 176px;
+  padding:
+    clamp(10px, 0.65vw, 42px)
+    clamp(7px, 0.44vw, 28px);
 
-  display: flex;
+  border-radius: 7px 0 0 7px;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 12px 0 0 12px;
-  background: #12bbb5;
+  background: var(--hero-accent);
   color: #ffffff;
 
-  font-size: 17px;
+  writing-mode: vertical-rl;
+  transform:
+    translateY(-50%)
+    rotate(180deg);
+
+  font-size: clamp(17px, 1vw, 70px);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
 
-  transform: translateY(-50%);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
   transition:
-    width 180ms ease,
     background-color 180ms ease;
 }
 
-.floatingContactButton span {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  white-space: nowrap;
-}
-
 .floatingContactButton:hover {
-  width: 55px;
-  background: #0da9a4;
+  background: #0fa9a4;
 }
 
 /* =========================================================
@@ -282,20 +338,32 @@
 }
 
 /* =========================================================
-   LARGE DESKTOP
+   VERY LARGE VIEWPORT / LOW BROWSER ZOOM
    ========================================================= */
 
-@media (min-width: 1900px) {
+@media (min-width: 2400px) {
+  .heroSection {
+    min-height: 100svh;
+  }
+
   .heroContent {
-    max-width: 1920px;
+    margin-left: 5vw;
   }
 
   .heroCopy {
-    width: min(1180px, 76%);
+    width: 76vw;
+  }
+
+  .heroHeading {
+    max-width: 74vw;
+  }
+
+  .heroDescription {
+    max-width: 78vw;
   }
 
   .featuredSection {
-    width: 650px;
+    width: 25vw;
   }
 }
 
@@ -304,20 +372,55 @@
    ========================================================= */
 
 @media (max-width: 1500px) {
+  .heroSection {
+    min-height: 710px;
+  }
+
   .heroContent {
-    padding-inline: 64px;
+    margin-left: 5vw;
   }
 
   .heroCopy {
-    width: 82%;
+    width: min(82vw, 1120px);
   }
 
   .heroHeading {
-    font-size: clamp(50px, 4.5vw, 68px);
+    max-width: 1050px;
+    font-size: clamp(52px, 4.6vw, 76px);
   }
 
   .heroDescription {
-    font-size: clamp(25px, 2.35vw, 35px);
+    max-width: 1120px;
+    font-size: clamp(27px, 2.35vw, 40px);
+  }
+
+  .primaryButton {
+    min-width: 177px;
+    min-height: 64px;
+    margin-top: 50px;
+    padding: 0 30px;
+
+    font-size: 19px;
+  }
+
+  .featuredSection {
+    width: min(610px, 100%);
+    margin-top: 44px;
+  }
+
+  .featuredHeading {
+    font-size: clamp(26px, 2vw, 34px);
+  }
+
+  .featuredGrid {
+    margin-top: 25px;
+    column-gap: 42px;
+    row-gap: 25px;
+  }
+
+  .publicationLogo {
+    max-width: 142px;
+    max-height: 48px;
   }
 }
 
@@ -327,6 +430,7 @@
 
 @media (max-width: 1200px) {
   .heroContent {
+    margin-left: 0;
     padding-inline: 48px;
   }
 
@@ -361,10 +465,11 @@
 @media (max-width: 991px) {
   .heroSection {
     --navbar-height: 72px;
+    min-height: 760px;
   }
 
   .contentContainer {
-    min-height: calc(100svh - var(--navbar-height));
+    height: 100%;
     align-items: flex-end;
   }
 
@@ -373,6 +478,8 @@
       100px
       32px
       55px;
+
+    margin-left: 0;
   }
 
   .heroCopy {
@@ -404,7 +511,8 @@
 
 @media (max-width: 640px) {
   .heroSection {
-    min-height: auto;
+    height: auto;
+    min-height: 760px;
   }
 
   .backgroundVideo {
@@ -453,7 +561,9 @@
 
   .featuredGrid {
     margin-top: 22px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
     column-gap: 26px;
     row-gap: 22px;
   }

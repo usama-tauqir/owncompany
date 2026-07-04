@@ -1,15 +1,21 @@
 .servicesSection {
   --services-accent: #13bbb5;
-  --services-background: #010505;
+  --services-background: #ffffff;
+  --services-text: #050505;
+  --services-card-text: #ffffff;
+  --services-glow-strong: rgba(19, 187, 181, 0.28);
+  --services-glow-soft: rgba(19, 187, 181, 0.12);
 
   position: relative;
   isolation: isolate;
   width: 100%;
   overflow: hidden;
-  padding: clamp(86px, 8vw, 126px) 0
-    clamp(62px, 6vw, 92px);
+
+  padding: 86px 0 74px;
+
   background: var(--services-background);
-  color: #ffffff;
+  color: var(--services-text);
+
   font-family:
     "ITC Avant Garde Gothic",
     "Century Gothic",
@@ -33,26 +39,24 @@
 .backgroundGlow::before {
   content: "";
   position: absolute;
-  top: -12%;
+  top: 48%;
   left: 50%;
-  width: min(1100px, 78vw);
-  height: 850px;
-  border-radius: 50%;
-  background: rgba(0, 117, 104, 0.3);
-  filter: blur(150px);
-  transform: translateX(-50%);
-}
 
-.backgroundGlow::after {
-  content: "";
-  position: absolute;
-  right: 6%;
-  bottom: -30%;
-  width: 650px;
-  height: 550px;
+  width: 980px;
+  height: 520px;
+
   border-radius: 50%;
-  background: rgba(0, 82, 76, 0.2);
-  filter: blur(150px);
+
+  background:
+    radial-gradient(
+      circle,
+      var(--services-glow-strong) 0%,
+      var(--services-glow-soft) 42%,
+      rgba(255, 255, 255, 0) 76%
+    );
+
+  filter: blur(42px);
+  transform: translate(-50%, -38%);
 }
 
 /* =========================================================
@@ -62,7 +66,8 @@
 .container {
   position: relative;
   z-index: 2;
-  width: min(100% - 80px, 1720px);
+
+  width: min(100% - 96px, 1720px);
   margin-inline: auto;
 }
 
@@ -71,26 +76,32 @@
    ========================================================= */
 
 .sectionHeader {
-  margin-bottom: clamp(68px, 6vw, 92px);
+  margin-bottom: 36px;
 }
 
 .eyebrow {
-  margin: 0 0 24px;
+  margin: 0 0 20px;
+
   color: var(--services-accent);
-  font-size: clamp(16px, 1.15vw, 21px);
+
+  font-size: 18px;
   font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.15em;
+
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 
 .heading {
+  max-width: 980px;
   margin: 0;
-  color: #ffffff;
-  font-size: clamp(45px, 4vw, 68px);
+
+  color: var(--services-text);
+
+  font-size: clamp(54px, 4.25vw, 76px);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.045em;
+  line-height: 1.03;
+  letter-spacing: -0.058em;
 }
 
 /* =========================================================
@@ -98,9 +109,12 @@
    ========================================================= */
 
 .servicesGrid {
+  width: 100%;
+
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(22px, 2vw, 38px);
+
+  gap: 38px;
 }
 
 /* =========================================================
@@ -110,53 +124,93 @@
 .serviceCard {
   position: relative;
   isolation: isolate;
-  aspect-ratio: 1.25 / 1;
-  min-height: 300px;
+
+  width: 100%;
+  height: 82px;
+
   overflow: hidden;
-  border-radius: 9px;
-  display: block;
-  background: #142423;
-  color: #ffffff;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+
+  background: #06131c;
+  color: var(--services-card-text);
   text-decoration: none;
-  animation: serviceCardReveal 450ms ease both;
+
+  box-shadow:
+    0 10px 26px
+    rgba(0, 0, 0, 0.1);
+
+  transform: translateZ(0);
+
+  animation:
+    serviceCardReveal
+    450ms
+    ease
+    both;
 }
 
+/*
+  IMPORTANT:
+  Do NOT use negative z-index here.
+  Negative z-index hides the image behind the card background.
+*/
+
 .serviceImage {
-  z-index: -3;
+  z-index: 0;
+
   object-fit: cover;
-  transform: scale(1.01);
+  object-position: center center;
+
+  transform: scale(1.02);
+
+  filter:
+    brightness(0.7)
+    saturate(0.92);
+
   transition:
     transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 400ms ease;
+    filter 380ms ease;
 }
 
 .cardDarkOverlay {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 1;
+
   background:
     linear-gradient(
-      180deg,
-      rgba(4, 10, 14, 0.44) 0%,
-      rgba(4, 10, 14, 0.27) 48%,
-      rgba(4, 10, 14, 0.58) 100%
+      90deg,
+      rgba(3, 7, 14, 0.67) 0%,
+      rgba(3, 7, 14, 0.5) 52%,
+      rgba(3, 7, 14, 0.3) 100%
     );
-  transition: background-color 400ms ease;
+
+  pointer-events: none;
+
+  transition:
+    opacity 400ms ease;
 }
 
 .cardHoverGradient {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 2;
+
   background:
     linear-gradient(
       135deg,
-      rgba(0, 201, 186, 0.15) 0%,
-      rgba(0, 54, 52, 0.02) 58%,
+      rgba(0, 201, 186, 0.2) 0%,
+      rgba(0, 54, 52, 0.03) 58%,
       rgba(0, 0, 0, 0.12) 100%
     );
+
   opacity: 0;
-  transform: scale(1.1);
+  transform: scale(1.08);
+
+  pointer-events: none;
+
   transition:
     opacity 400ms ease,
     transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -165,25 +219,35 @@
 .serviceTitle {
   position: relative;
   z-index: 3;
-  max-width: 92%;
+
+  max-width: 100%;
   margin: 0;
-  padding: clamp(27px, 2vw, 34px);
+
+  padding-inline: 12px;
+
   color: #ffffff;
-  font-size: clamp(25px, 1.75vw, 34px);
+
+  font-size: clamp(27px, 1.85vw, 34px);
   font-weight: 700;
-  line-height: 1.22;
-  letter-spacing: -0.045em;
-  text-wrap: balance;
-  transition: transform 350ms ease;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+
+  white-space: nowrap;
+
+  transition:
+    transform 350ms ease;
 }
 
 .serviceCard:hover .serviceImage {
   transform: scale(1.08);
-  filter: saturate(1.08);
+
+  filter:
+    brightness(0.52)
+    saturate(0.9);
 }
 
 .serviceCard:hover .cardDarkOverlay {
-  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0.92;
 }
 
 .serviceCard:hover .cardHoverGradient {
@@ -192,11 +256,14 @@
 }
 
 .serviceCard:hover .serviceTitle {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .serviceCard:focus-visible {
-  outline: 3px solid var(--services-accent);
+  outline:
+    3px solid
+    var(--services-accent);
+
   outline-offset: 5px;
 }
 
@@ -205,28 +272,36 @@
    ========================================================= */
 
 .buttonWrapper {
-  margin-top: clamp(48px, 4vw, 64px);
+  margin-top: 32px;
+
   display: flex;
   justify-content: center;
 }
 
 .viewMoreButton {
-  min-width: 338px;
-  min-height: 87px;
+  min-width: 320px;
+  min-height: 74px;
+
   padding: 0 38px;
+
   border: 1.5px solid var(--services-accent);
   border-radius: 999px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  background: rgba(0, 0, 0, 0.14);
-  color: #ffffff;
+  gap: 22px;
+
+  background: transparent;
+  color: var(--services-text);
+
   font: inherit;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1;
+
   cursor: pointer;
+
   transition:
     background-color 220ms ease,
     color 220ms ease,
@@ -236,13 +311,20 @@
 
 .viewMoreButton:hover {
   background: var(--services-accent);
-  color: #001b19;
+  color: #ffffff;
+
   transform: translateY(-2px);
-  box-shadow: 0 14px 35px rgba(0, 187, 178, 0.2);
+
+  box-shadow:
+    0 16px 40px
+    rgba(20, 187, 181, 0.24);
 }
 
 .viewMoreButton:focus-visible {
-  outline: 3px solid #ffffff;
+  outline:
+    3px solid
+    rgba(20, 187, 181, 0.4);
+
   outline-offset: 5px;
 }
 
@@ -250,11 +332,238 @@
   width: 29px;
   height: 29px;
   flex: 0 0 29px;
-  transition: transform 350ms ease;
+
+  transition:
+    transform 350ms ease;
 }
 
 .arrowIconExpanded {
   transform: rotate(180deg);
+}
+
+/* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .servicesSection {
+    padding-top: 6vw;
+    padding-bottom: 5.4vw;
+  }
+
+  .container {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .backgroundGlow::before {
+    width: 70vw;
+    height: 34vw;
+    filter: blur(1.35vw);
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.4vw;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.35vw;
+    font-size: 1.1vw;
+  }
+
+  .heading {
+    max-width: 72vw;
+    font-size: 4.75vw;
+  }
+
+  .servicesGrid {
+    gap: 2.1vw;
+  }
+
+  .serviceCard {
+    height: 4.55vw;
+    border-radius: 0.25vw;
+  }
+
+  .serviceTitle {
+    padding-inline: 0.62vw;
+    font-size: 1.75vw;
+  }
+
+  .buttonWrapper {
+    margin-top: 2.4vw;
+  }
+
+  .viewMoreButton {
+    min-width: 17.3vw;
+    min-height: 4.65vw;
+
+    padding-inline: 2.3vw;
+    gap: 1vw;
+
+    border-width: 0.08vw;
+
+    font-size: 1.4vw;
+  }
+
+  .arrowIcon {
+    width: 1.45vw;
+    height: 1.45vw;
+    flex-basis: 1.45vw;
+  }
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .servicesSection {
+    padding: 82px 0 70px;
+  }
+
+  .container {
+    width: min(100% - 56px, 1720px);
+  }
+
+  .servicesGrid {
+    gap: 24px;
+  }
+
+  .serviceCard {
+    height: 76px;
+  }
+
+  .serviceTitle {
+    font-size: clamp(24px, 1.8vw, 29px);
+  }
+
+  .viewMoreButton {
+    min-height: 68px;
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .servicesSection {
+    padding: 80px 0 84px;
+  }
+
+  .container {
+    width: min(100% - 48px, 900px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 40px;
+  }
+
+  .heading {
+    max-width: 760px;
+    font-size: clamp(46px, 7vw, 64px);
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .serviceCard {
+    height: 92px;
+  }
+
+  .serviceTitle {
+    font-size: 29px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .servicesSection {
+    padding: 68px 0 74px;
+  }
+
+  .container {
+    width: min(100% - 32px, 560px);
+  }
+
+  .sectionHeader {
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .heading {
+    max-width: 100%;
+    font-size: clamp(40px, 11vw, 54px);
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .serviceCard {
+    height: 86px;
+  }
+
+  .serviceTitle {
+    font-size: 27px;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .buttonWrapper {
+    margin-top: 30px;
+  }
+
+  .viewMoreButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 62px;
+
+    padding-inline: 25px;
+
+    gap: 18px;
+
+    font-size: 20px;
+  }
+
+  .arrowIcon {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .servicesSection {
+  --services-background: #010505;
+  --services-text: #ffffff;
+  --services-glow-strong: rgba(0, 117, 104, 0.3);
+  --services-glow-soft: rgba(0, 82, 76, 0.2);
+}
+
+:global(html.dark) .viewMoreButton {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+:global(html.dark) .viewMoreButton:hover {
+  background: var(--services-accent);
+  color: #001b19;
 }
 
 /* =========================================================
@@ -274,119 +583,6 @@
 }
 
 /* =========================================================
-   SMALL DESKTOP
-   ========================================================= */
-
-@media (max-width: 1350px) {
-  .container {
-    width: min(100% - 56px, 1720px);
-  }
-
-  .servicesGrid {
-    gap: 24px;
-  }
-
-  .serviceCard {
-    min-height: 260px;
-  }
-
-  .serviceTitle {
-    font-size: clamp(22px, 1.8vw, 29px);
-  }
-}
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1050px) {
-  .servicesSection {
-    padding-top: 80px;
-  }
-
-  .container {
-    width: min(100% - 48px, 900px);
-  }
-
-  .sectionHeader {
-    margin-bottom: 55px;
-  }
-
-  .servicesGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .serviceCard {
-    min-height: 300px;
-  }
-
-  .serviceTitle {
-    font-size: 29px;
-  }
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 640px) {
-  .servicesSection {
-    padding: 70px 0 60px;
-  }
-
-  .container {
-    width: min(100% - 32px, 560px);
-  }
-
-  .sectionHeader {
-    margin-bottom: 42px;
-  }
-
-  .eyebrow {
-    margin-bottom: 18px;
-    font-size: 15px;
-  }
-
-  .heading {
-    font-size: clamp(39px, 12vw, 50px);
-  }
-
-  .servicesGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .serviceCard {
-    min-height: 300px;
-    aspect-ratio: 1.18 / 1;
-  }
-
-  .serviceTitle {
-    padding: 27px;
-    font-size: 28px;
-  }
-
-  .buttonWrapper {
-    margin-top: 40px;
-  }
-
-  .viewMoreButton {
-    width: 100%;
-    min-width: 0;
-    min-height: 68px;
-    padding-inline: 25px;
-    gap: 18px;
-    font-size: 18px;
-  }
-
-  .arrowIcon {
-    width: 24px;
-    height: 24px;
-    flex-basis: 24px;
-  }
-}
-
-/* =========================================================
    REDUCED MOTION
    ========================================================= */
 
@@ -396,6 +592,7 @@
   }
 
   .serviceImage,
+  .cardDarkOverlay,
   .cardHoverGradient,
   .serviceTitle,
   .viewMoreButton,

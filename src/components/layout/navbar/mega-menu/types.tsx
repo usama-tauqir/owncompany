@@ -9,3 +9,9 @@ export interface NavigationLink {
   label: string;
   href: string;
 }
+
+/* ✅ ADD THIS (THIS IS WHAT YOU ARE MISSING) */
+export interface NavbarSection {
+  title: string;
+  links: NavigationLink[];
+}

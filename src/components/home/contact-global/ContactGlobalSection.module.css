@@ -5,15 +5,17 @@
   --contact-background: #ffffff;
   --contact-input-background: #f5f8f9;
   --contact-input-border: #aeb8bb;
+  --contact-field-text: #111111;
+  --contact-muted-text: #101010;
 
   position: relative;
   width: 100%;
   overflow: hidden;
 
   padding:
-    clamp(58px, 5vw, 88px)
+    clamp(70px, 5.4vw, 104px)
     0
-    clamp(50px, 5vw, 82px);
+    clamp(64px, 5vw, 96px);
 
   background: var(--contact-background);
   color: var(--contact-text);
@@ -26,6 +28,10 @@
     sans-serif;
 }
 
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
 .container {
   width: min(100% - 96px, 1640px);
   margin-inline: auto;
@@ -36,7 +42,7 @@
     minmax(430px, 0.98fr);
 
   align-items: start;
-  gap: clamp(58px, 6vw, 110px);
+  gap: clamp(64px, 6vw, 116px);
 }
 
 /* =========================================================
@@ -51,14 +57,14 @@
   margin:
     0
     0
-    clamp(44px, 4vw, 64px);
+    clamp(44px, 4vw, 68px);
 
   color: var(--contact-accent);
 
-  font-size: clamp(48px, 4vw, 68px);
+  font-size: clamp(54px, 4.25vw, 76px);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.055em;
   text-align: center;
 }
 
@@ -74,7 +80,7 @@
   display: block;
   margin: 0 0 7px;
 
-  color: #111111;
+  color: var(--contact-field-text);
 
   font-size: 12px;
   font-weight: 500;
@@ -95,7 +101,7 @@
   background:
     var(--contact-input-background);
 
-  color: #111111;
+  color: var(--contact-field-text);
 
   font: inherit;
   font-size: 15px;
@@ -103,7 +109,8 @@
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease,
-    background-color 180ms ease;
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 .textInput,
@@ -141,6 +148,7 @@
 
 .phoneField {
   width: 100%;
+
   display: grid;
   grid-template-columns: 108px minmax(0, 1fr);
 
@@ -155,15 +163,19 @@
 .dialCodeSelect,
 .phoneInput {
   min-height: 39px;
+
   border: 0;
+
   background: transparent;
-  color: #111111;
+  color: var(--contact-field-text);
+
   font: inherit;
   font-size: 14px;
 }
 
 .dialCodeSelect {
   padding: 6px 7px;
+
   border-right:
     1px solid
     var(--contact-input-border);
@@ -204,7 +216,7 @@
   align-items: center;
   gap: 12px;
 
-  color: #151515;
+  color: var(--contact-field-text);
 
   font-size: clamp(16px, 1.25vw, 22px);
   font-weight: 400;
@@ -215,8 +227,10 @@
 
 .checkboxInput {
   position: absolute;
+
   width: 1px;
   height: 1px;
+
   opacity: 0;
   pointer-events: none;
 }
@@ -237,8 +251,7 @@
   background: var(--contact-accent);
 }
 
-.checkboxInput:checked
-  + .customCheckbox::after {
+.checkboxInput:checked + .customCheckbox::after {
   content: "";
 
   position: absolute;
@@ -254,8 +267,7 @@
   transform: rotate(45deg);
 }
 
-.checkboxInput:focus-visible
-  + .customCheckbox {
+.checkboxInput:focus-visible + .customCheckbox {
   outline:
     3px solid
     rgba(18, 187, 181, 0.22);
@@ -265,7 +277,9 @@
 
 .fieldError {
   margin: 8px 0 0;
+
   color: #bb2525;
+
   font-size: 13px;
 }
 
@@ -340,12 +354,14 @@
 
 .informationColumn {
   position: relative;
+
   min-width: 0;
   padding-top: 10px;
 }
 
 .decorationWrapper {
   position: relative;
+
   width: 100%;
   height: 300px;
 
@@ -361,6 +377,7 @@
   width: 340px;
   height: auto;
   flex: 0 0 auto;
+
   display: block;
 
   margin-top: -12px;
@@ -377,6 +394,7 @@
 
 .infoCard {
   position: relative;
+
   padding: 5px 32px 4px 0;
 }
 
@@ -433,7 +451,7 @@
   max-width: 510px;
   margin: 18px 0 0;
 
-  color: #101010;
+  color: var(--contact-muted-text);
 
   font-size: clamp(23px, 1.9vw, 32px);
   font-weight: 400;
@@ -496,12 +514,220 @@
 }
 
 /* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .section {
+    padding-top: 5.4vw;
+    padding-bottom: 5vw;
+  }
+
+  .container {
+    width: 90vw;
+    max-width: none;
+
+    grid-template-columns:
+      minmax(0, 1.92fr)
+      minmax(0, 0.98fr);
+
+    gap: 6vw;
+  }
+
+  .formHeading {
+    margin-bottom: 4vw;
+
+    font-size: 4.25vw;
+  }
+
+  .formField {
+    margin-bottom: 0.85vw;
+  }
+
+  .fieldLabel {
+    margin-bottom: 0.38vw;
+
+    font-size: 0.64vw;
+  }
+
+  .textInput,
+  .selectInput,
+  .textareaInput {
+    border-width: 0.055vw;
+
+    font-size: 0.8vw;
+  }
+
+  .textInput,
+  .selectInput {
+    min-height: 2.1vw;
+    padding: 0.38vw 0.6vw;
+  }
+
+  .textareaInput {
+    min-height: 3.65vw;
+    padding: 0.55vw 0.6vw;
+  }
+
+  .phoneField {
+    grid-template-columns: 5.75vw minmax(0, 1fr);
+    border-width: 0.055vw;
+  }
+
+  .dialCodeSelect,
+  .phoneInput {
+    min-height: 2.1vw;
+
+    font-size: 0.75vw;
+  }
+
+  .dialCodeSelect {
+    padding: 0.32vw 0.38vw;
+    border-right-width: 0.055vw;
+  }
+
+  .phoneInput {
+    padding: 0.38vw 0.6vw;
+  }
+
+  .servicesFieldset {
+    margin-bottom: 0.9vw;
+  }
+
+  .servicesList {
+    gap: 0.38vw;
+  }
+
+  .checkboxLabel {
+    gap: 0.65vw;
+
+    font-size: 1.25vw;
+  }
+
+  .customCheckbox {
+    width: 0.82vw;
+    height: 0.82vw;
+    flex-basis: 0.82vw;
+  }
+
+  .checkboxInput:checked + .customCheckbox::after {
+    top: 0.1vw;
+    left: 0.22vw;
+
+    width: 0.22vw;
+    height: 0.38vw;
+
+    border-right-width: 0.1vw;
+    border-bottom-width: 0.1vw;
+  }
+
+  .submitButton {
+    min-width: 4.9vw;
+    min-height: 2.25vw;
+
+    padding-inline: 0.95vw;
+
+    border-width: 0.08vw;
+
+    font-size: 0.95vw;
+  }
+
+  .informationColumn {
+    padding-top: 0.55vw;
+  }
+
+  .decorationWrapper {
+    height: 16.2vw;
+  }
+
+  .decorativeArc {
+    width: 18.5vw;
+
+    margin-top: -0.7vw;
+    margin-right: -1.3vw;
+  }
+
+  .infoCards {
+    gap: 3vw;
+  }
+
+  .infoCard {
+    padding:
+      0.28vw
+      1.75vw
+      0.22vw
+      0;
+  }
+
+  .infoCardContent {
+    gap: 0.95vw;
+  }
+
+  .infoIcon {
+    width: 1.5vw;
+    height: 1.5vw;
+    flex-basis: 1.5vw;
+
+    margin-top: 0.42vw;
+  }
+
+  .infoTitle {
+    font-size: 3.6vw;
+  }
+
+  .infoDescription {
+    max-width: 27.5vw;
+
+    margin-top: 1vw;
+
+    font-size: 1.9vw;
+  }
+
+  .learnMoreButton {
+    min-width: 4.65vw;
+    min-height: 1.8vw;
+
+    margin-top: 0.85vw;
+    padding-inline: 0.85vw;
+
+    border-width: 0.08vw;
+
+    font-size: 0.65vw;
+  }
+
+  .infoAccentLine {
+    width: 0.1vw;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1600px) and (max-width: 2399px) {
+  .decorationWrapper {
+    height: 335px;
+  }
+
+  .decorativeArc {
+    width: 382px;
+    margin-top: -18px;
+    margin-right: -34px;
+  }
+}
+
+/* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1050px) {
+  .section {
+    padding: 70px 0;
+  }
+
   .container {
     width: min(100% - 48px, 900px);
+
     grid-template-columns: 1fr;
     gap: 80px;
   }
@@ -551,6 +777,7 @@
 
   .formHeading {
     margin-bottom: 40px;
+
     font-size: clamp(42px, 12vw, 54px);
   }
 
@@ -611,14 +838,9 @@
   --contact-background: #080808;
   --contact-text: #ffffff;
   --contact-input-background: #151515;
-  --contact-input-border:
-    rgba(255, 255, 255, 0.25);
-}
-
-:global(html.dark) .fieldLabel,
-:global(html.dark) .checkboxLabel,
-:global(html.dark) .infoDescription {
-  color: #ffffff;
+  --contact-input-border: rgba(255, 255, 255, 0.25);
+  --contact-field-text: #ffffff;
+  --contact-muted-text: #ffffff;
 }
 
 :global(html.dark) .textInput,
@@ -655,31 +877,5 @@
   .submitButton,
   .learnMoreButton {
     transition: none;
-  }
-}
-@media (min-width: 1600px) {
-  .decorationWrapper {
-    height: 335px;
-  }
-
-  .decorativeArc {
-    width: 382px;
-    margin-top: -18px;
-    margin-right: -34px;
-  }
-}
-@media (max-width: 1300px) {
-  .decorationWrapper {
-    height: 250px;
-  }
-
-  .decorativeArc {
-    width: 300px;
-    margin-right: -18px;
-  }
-}
-@media (max-width: 1050px) {
-  .decorationWrapper {
-    display: none;
   }
 }

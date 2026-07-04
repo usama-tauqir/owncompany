@@ -30,7 +30,7 @@ export default function ServiceCard({
         sizes="
           (max-width: 640px) 100vw,
           (max-width: 1100px) 50vw,
-          25vw
+          23vw
         "
       />
 

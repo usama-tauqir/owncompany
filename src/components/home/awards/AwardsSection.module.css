@@ -6,10 +6,11 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+
   padding:
-    clamp(48px, 5vw, 78px)
+    clamp(72px, 5.4vw, 105px)
     0
-    clamp(26px, 3vw, 54px);
+    clamp(48px, 4.4vw, 78px);
 
   background: var(--awards-background);
   color: var(--awards-text);
@@ -32,16 +33,20 @@
    ========================================================= */
 
 .heading {
+  max-width: 1240px;
+
   margin:
     0
     auto
-    clamp(84px, 7vw, 118px);
+    clamp(74px, 6vw, 108px);
 
   color: var(--awards-text);
-  font-size: clamp(48px, 4.1vw, 68px);
+
+  font-size: clamp(54px, 4.25vw, 76px);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.048em;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+
   text-align: center;
   text-wrap: balance;
 }
@@ -52,6 +57,7 @@
 
 .awardsGrid {
   width: 100%;
+
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -62,27 +68,31 @@
 
 .awardItem {
   position: relative;
-  min-width: 0;
-  min-height: 158px;
 
-  padding: 18px 24px;
+  min-width: 0;
+  min-height: 162px;
+
+  padding: 20px 26px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-right: 1px dashed var(--awards-grid-line);
-  border-bottom: 1px dashed var(--awards-grid-line);
+  border-right:
+    1px dashed
+    var(--awards-grid-line);
+
+  border-bottom:
+    1px dashed
+    var(--awards-grid-line);
 }
 
-/* Remove border from the fifth item of every row */
-
+/* Remove border from fifth item of every row */
 .awardItem:nth-child(5n) {
   border-right: 0;
 }
 
 /* Remove bottom border from second desktop row */
-
 .awardItem:nth-child(n + 6) {
   border-bottom: 0;
 }
@@ -93,12 +103,14 @@
 
 .awardImage {
   width: auto;
-  max-width: 170px;
+  max-width: 175px;
   height: auto;
-  max-height: 145px;
+  max-height: 148px;
 
   display: block;
+
   object-fit: contain;
+  object-position: center;
 
   transition:
     transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -111,17 +123,84 @@
 }
 
 /* =========================================================
-   LARGE DESKTOP
+   25% ZOOM / VERY WIDE VIEWPORT
    ========================================================= */
 
-@media (min-width: 1700px) {
+@media (min-width: 2400px) {
+  .awardsSection {
+    padding-top: 5.4vw;
+    padding-bottom: 4.4vw;
+  }
+
+  .container {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .heading {
+    max-width: 72vw;
+
+    margin-bottom: 6vw;
+
+    font-size: 4.25vw;
+  }
+
   .awardItem {
-    min-height: 165px;
+    min-height: 9vw;
+
+    padding:
+      1.1vw
+      1.45vw;
+
+    border-right-width: 0.06vw;
+    border-bottom-width: 0.06vw;
   }
 
   .awardImage {
-    max-width: 180px;
-    max-height: 150px;
+    max-width: 9.6vw;
+    max-height: 8.2vw;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1700px) and (max-width: 2399px) {
+  .awardItem {
+    min-height: 170px;
+  }
+
+  .awardImage {
+    max-width: 184px;
+    max-height: 154px;
+  }
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1350px) {
+  .container {
+    width: min(100% - 64px, 1180px);
+  }
+
+  .heading {
+    max-width: 1040px;
+    margin-bottom: 70px;
+
+    font-size: clamp(46px, 4.2vw, 62px);
+  }
+
+  .awardItem {
+    min-height: 148px;
+    padding: 18px 20px;
+  }
+
+  .awardImage {
+    max-width: 150px;
+    max-height: 132px;
   }
 }
 
@@ -130,12 +209,19 @@
    ========================================================= */
 
 @media (max-width: 1000px) {
+  .awardsSection {
+    padding: 70px 0 56px;
+  }
+
   .container {
     width: min(100% - 48px, 900px);
   }
 
   .heading {
-    margin-bottom: 68px;
+    margin-bottom: 58px;
+
+    font-size: clamp(42px, 7vw, 58px);
+    line-height: 1.07;
   }
 
   .awardsGrid {
@@ -143,17 +229,27 @@
   }
 
   .awardItem {
-    min-height: 175px;
-    border-right: 1px dashed var(--awards-grid-line);
-    border-bottom: 1px dashed var(--awards-grid-line);
+    min-height: 170px;
+
+    border-right:
+      1px dashed
+      var(--awards-grid-line);
+
+    border-bottom:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(5n) {
-    border-right: 1px dashed var(--awards-grid-line);
+    border-right:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(n + 6) {
-    border-bottom: 1px dashed var(--awards-grid-line);
+    border-bottom:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(3n) {
@@ -171,7 +267,7 @@
 
 @media (max-width: 640px) {
   .awardsSection {
-    padding: 58px 0 38px;
+    padding: 58px 0 42px;
   }
 
   .container {
@@ -179,7 +275,8 @@
   }
 
   .heading {
-    margin-bottom: 46px;
+    margin-bottom: 42px;
+
     font-size: clamp(38px, 11vw, 50px);
     line-height: 1.08;
   }
@@ -189,28 +286,36 @@
   }
 
   .awardItem {
-    min-height: 160px;
-    padding: 20px 14px;
-    border-right: 1px dashed var(--awards-grid-line);
-    border-bottom: 1px dashed var(--awards-grid-line);
+    min-height: 158px;
+
+    padding:
+      20px
+      14px;
+
+    border-right:
+      1px dashed
+      var(--awards-grid-line);
+
+    border-bottom:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(3n) {
-    border-right: 1px dashed var(--awards-grid-line);
+    border-right:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(n + 7) {
-    border-bottom: 1px dashed var(--awards-grid-line);
+    border-bottom:
+      1px dashed
+      var(--awards-grid-line);
   }
 
   .awardItem:nth-child(2n) {
     border-right: 0;
   }
-
-  /*
-    There are nine items, so the final mobile item stays in
-    the left column. Remove its bottom border.
-  */
 
   .awardItem:last-child {
     border-bottom: 0;
@@ -236,6 +341,22 @@
     max-width: 112px;
     max-height: 112px;
   }
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+:global(html.dark) .awardsSection {
+  --awards-background: #080808;
+  --awards-text: #ffffff;
+  --awards-grid-line: #15bbb5;
+}
+
+:global(html.dark) .awardImage {
+  filter:
+    brightness(0)
+    invert(1);
 }
 
 /* =========================================================

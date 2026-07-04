@@ -2,18 +2,22 @@
   --insights-accent: #14bbb5;
   --insights-dark-teal: #075c72;
   --insights-text: #071c24;
+  --insights-background: #ffffff;
+  --insights-description: #111111;
+  --insights-glow-strong: rgba(28, 238, 225, 0.92);
+  --insights-glow-medium: rgba(28, 238, 225, 0.55);
+  --insights-glow-soft: rgba(28, 238, 225, 0.2);
 
   position: relative;
   isolation: isolate;
+
   width: 100%;
-  min-height: 850px;
+  min-height: 900px;
   overflow: hidden;
 
-  padding:
-    clamp(80px, 7vw, 120px)
-    0;
+  padding: clamp(88px, 7vw, 128px) 0;
 
-  background: #ffffff;
+  background: var(--insights-background);
   color: var(--insights-text);
 
   font-family:
@@ -32,31 +36,33 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+
   overflow: hidden;
   pointer-events: none;
 }
 
 .backgroundGlow::before {
   content: "";
-  position: absolute;
-  right: -180px;
-  bottom: -330px;
 
-  width: 830px;
-  height: 830px;
+  position: absolute;
+  right: -175px;
+  bottom: -345px;
+
+  width: 850px;
+  height: 850px;
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(29, 238, 224, 0.95) 0%,
-      rgba(29, 238, 224, 0.5) 34%,
-      rgba(29, 238, 224, 0.18) 58%,
-      rgba(29, 238, 224, 0) 76%
+      var(--insights-glow-strong) 0%,
+      var(--insights-glow-medium) 33%,
+      var(--insights-glow-soft) 56%,
+      rgba(28, 238, 225, 0) 75%
     );
 
-  filter: blur(25px);
+  filter: blur(24px);
 }
 
 /* =========================================================
@@ -69,15 +75,17 @@
 }
 
 .contentLayout {
-  min-height: 690px;
+  min-height: 760px;
 
   display: grid;
   grid-template-columns:
-    minmax(460px, 40%)
-    minmax(0, 1fr);
+    minmax(430px, 40%)
+    minmax(0, 50%);
 
+  justify-content: space-between;
   align-items: center;
-  gap: clamp(60px, 7vw, 125px);
+
+  gap: clamp(54px, 6vw, 110px);
 }
 
 /* =========================================================
@@ -87,20 +95,19 @@
 .textContent {
   position: relative;
   z-index: 5;
-  max-width: 670px;
+
+  max-width: 675px;
 }
 
 .eyebrow {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 
   color: var(--insights-accent);
 
-  font-size: clamp(15px, 1.15vw, 21px);
+  font-size: clamp(16px, 1.1vw, 21px);
   font-weight: 500;
   line-height: 1;
-
-  letter-spacing: 0.19em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .heading {
@@ -108,18 +115,18 @@
 
   color: var(--insights-dark-teal);
 
-  font-size: clamp(45px, 3.55vw, 66px);
+  font-size: clamp(46px, 3.55vw, 66px);
   font-weight: 500;
   line-height: 1.08;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.052em;
 
   text-wrap: balance;
 
   background:
     linear-gradient(
-      100deg,
+      105deg,
       #07566e 0%,
-      #08798a 55%,
+      #08798a 54%,
       #16bdb7 100%
     );
 
@@ -131,20 +138,20 @@
 .description {
   margin: 20px 0 0;
 
-  color: #111111;
+  color: var(--insights-description);
 
-  font-size: clamp(26px, 2.1vw, 39px);
+  font-size: clamp(26px, 2.08vw, 39px);
   font-weight: 400;
   line-height: 1.25;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
 }
 
 .primaryButton {
-  min-width: 190px;
-  min-height: 66px;
+  min-width: 184px;
+  min-height: 62px;
 
-  margin-top: 28px;
-  padding: 0 30px;
+  margin-top: 29px;
+  padding: 0 28px;
 
   border: 2px solid var(--insights-accent);
   border-radius: 999px;
@@ -156,16 +163,16 @@
   background: var(--insights-accent);
   color: #ffffff;
 
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
 
   transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    transform 200ms ease,
-    box-shadow 200ms ease;
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .primaryButton:hover {
@@ -180,7 +187,8 @@
 }
 
 .primaryButton:focus-visible {
-  outline: 3px solid
+  outline:
+    3px solid
     rgba(20, 187, 181, 0.4);
 
   outline-offset: 5px;
@@ -192,7 +200,8 @@
 
 .insightsArea {
   position: relative;
-  height: 710px;
+
+  height: 760px;
   min-width: 0;
 }
 
@@ -201,21 +210,19 @@
   height: 100%;
 
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 1fr)
-  );
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   gap: 16px;
 }
 
 .insightColumn {
-  --parallax-y: 0px;
+  --parallax-y: 0%;
 
   min-width: 0;
 
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 
   will-change: transform;
@@ -223,19 +230,23 @@
 
 .firstColumn {
   transform:
-    translateY(
-      calc(72px + var(--parallax-y))
+    translate3d(
+      0,
+      calc(7% + var(--parallax-y)),
+      0
     );
 }
 
 .secondColumn {
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .thirdColumn {
   transform:
-    translateY(
-      calc(-42px + var(--parallax-y))
+    translate3d(
+      0,
+      calc(-7% + var(--parallax-y)),
+      0
     );
 }
 
@@ -251,193 +262,186 @@
   aspect-ratio: 1 / 1;
 
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 10px;
 
   display: block;
 
-  background: #092330;
+  background: #050811;
   color: #ffffff;
   text-decoration: none;
 
   box-shadow:
-    0 8px 24px
-    rgba(0, 0, 0, 0.19);
+    0 11px 32px
+    rgba(0, 0, 0, 0.26);
 
   transform: translateZ(0);
-
-  transition:
-    transform 400ms
-      cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 400ms ease;
 }
 
+/*
+  IMPORTANT:
+  Do not use negative z-index here.
+  Negative z-index can hide the Next.js image behind
+  the card background.
+*/
+
 .cardImage {
-  z-index: -4;
+  z-index: 0;
 
   object-fit: cover;
 
   transform: scale(1.01);
 
+  filter:
+    brightness(0.72)
+    saturate(0.95);
+
   transition:
-    transform 650ms
+    transform 700ms
       cubic-bezier(0.22, 1, 0.36, 1),
     filter 450ms ease;
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(3, 13, 24, 0.43) 0%,
-      rgba(3, 13, 24, 0.22) 46%,
-      rgba(3, 13, 24, 0.64) 100%
-    );
-
-  transition: background 400ms ease;
 }
 
 .blurOverlay {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 1;
 
-  background: rgba(2, 14, 23, 0.37);
+  background: rgba(4, 8, 18, 0.28);
 
   opacity: 0;
-  backdrop-filter: blur(3px);
 
-  transition: opacity 350ms ease;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  pointer-events: none;
+
+  transition: opacity 360ms ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.26) 0%,
+      rgba(0, 0, 0, 0.18) 38%,
+      rgba(0, 0, 0, 0.54) 100%
+    );
+
+  pointer-events: none;
 }
 
 /* =========================================================
-   CARD TEXT
+   CARD CONTENT
    ========================================================= */
 
 .cardContent {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 3;
+  inset: 0;
+  z-index: 4;
 
-  padding:
-    clamp(18px, 1.5vw, 27px);
+  padding: clamp(20px, 1.45vw, 27px);
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  pointer-events: none;
 }
 
 .cardType {
   color: #ffffff;
 
-  font-size: clamp(17px, 1.3vw, 24px);
+  font-size: clamp(18px, 1.3vw, 25px);
   font-weight: 600;
   line-height: 1.05;
-
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
 }
 
 .cardTitle {
+  max-width: 96%;
+
   margin-top: 12px;
 
   color: #ffffff;
 
-  font-size: clamp(13px, 1.05vw, 19px);
+  font-size: clamp(14px, 1vw, 20px);
   font-weight: 400;
-  line-height: 1.22;
-  letter-spacing: -0.035em;
+  line-height: 1.13;
+  letter-spacing: -0.046em;
 }
 
 /* =========================================================
-   CARD HOVER BUTTON
+   HOVER BUTTON
    ========================================================= */
 
 .cardExploreButton {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  left: 18px;
-  z-index: 5;
+  min-width: 148px;
+  min-height: 48px;
 
-  min-height: 68px;
-  padding:
-    8px
-    10px
-    8px
-    26px;
+  margin-top: 16px;
+  padding: 0 15px 0 22px;
 
-  border: 1px solid var(--insights-accent);
   border-radius: 999px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: #ffffff;
-  color: #09232b;
-
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.1;
-
-  opacity: 0;
-
-  transform: translateY(95px);
-
-  transition:
-    opacity 350ms ease,
-    transform 500ms
-      cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cardArrowWrapper {
-  width: 31px;
-  height: 31px;
-  flex: 0 0 31px;
-
-  border-radius: 0;
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 17px;
 
   background: var(--insights-accent);
   color: #ffffff;
 
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+
+  opacity: 0;
+
+  transform: translate3d(0, 8rem, 0);
+
   transition:
-    transform 250ms ease,
-    background-color 250ms ease;
+    opacity 360ms ease,
+    transform 560ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+.cardArrowWrapper {
+  width: 16px;
+  height: 20px;
+  flex: 0 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: inherit;
+
+  transition: transform 240ms ease;
 }
 
 .cardArrow {
-  width: 9px;
-  height: 17px;
+  width: 10px;
+  height: 18px;
 }
 
 /* =========================================================
    CARD HOVER STATE
    ========================================================= */
 
-.insightCard:hover,
-.insightCard:focus-visible {
-  transform: translateY(-4px);
-
-  box-shadow:
-    0 16px 38px
-    rgba(0, 0, 0, 0.28);
-}
-
 .insightCard:hover .cardImage,
 .insightCard:focus-visible .cardImage {
-  transform: scale(1.07);
+  transform: scale(1.06);
+
   filter:
-    brightness(0.8)
-    saturate(0.9);
+    brightness(0.48)
+    saturate(0.85);
 }
 
 .insightCard:hover .blurOverlay,
@@ -448,12 +452,11 @@
 .insightCard:hover .cardExploreButton,
 .insightCard:focus-visible .cardExploreButton {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .insightCard:hover .cardArrowWrapper,
-.insightCard:focus-visible
-  .cardArrowWrapper {
+.insightCard:focus-visible .cardArrowWrapper {
   transform: translateX(2px);
 }
 
@@ -463,6 +466,138 @@
     var(--insights-accent);
 
   outline-offset: 5px;
+}
+
+/* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .section {
+    min-height: auto;
+
+    padding:
+      7vw
+      0;
+  }
+
+  .backgroundGlow::before {
+    right: -9vw;
+    bottom: -18vw;
+
+    width: 45vw;
+    height: 45vw;
+
+    filter: blur(1.3vw);
+  }
+
+  .container {
+    width: 90vw;
+    max-width: none;
+  }
+
+  .contentLayout {
+    min-height: 42vw;
+
+    grid-template-columns:
+      minmax(0, 40%)
+      minmax(0, 50%);
+
+    gap: 6vw;
+  }
+
+  .textContent {
+    max-width: 36vw;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75vw;
+
+    font-size: 1.1vw;
+  }
+
+  .heading {
+    font-size: 3.55vw;
+  }
+
+  .description {
+    margin-top: 1.08vw;
+
+    font-size: 2.08vw;
+  }
+
+  .primaryButton {
+    min-width: 9.6vw;
+    min-height: 3.25vw;
+
+    margin-top: 1.55vw;
+    padding-inline: 1.45vw;
+
+    border-width: 0.08vw;
+
+    font-size: 0.95vw;
+  }
+
+  .insightsArea {
+    height: 40vw;
+  }
+
+  .insightsGrid {
+    gap: 0.85vw;
+  }
+
+  .insightColumn {
+    gap: 0.85vw;
+  }
+
+  .insightCard {
+    border-radius: 0.52vw;
+
+    box-shadow:
+      0 0.6vw 1.65vw
+      rgba(0, 0, 0, 0.26);
+  }
+
+  .cardContent {
+    padding: 1.45vw;
+  }
+
+  .cardType {
+    font-size: 1.3vw;
+  }
+
+  .cardTitle {
+    margin-top: 0.6vw;
+
+    font-size: 1vw;
+  }
+
+  .cardExploreButton {
+    min-width: 7.7vw;
+    min-height: 2.5vw;
+
+    margin-top: 0.85vw;
+    padding:
+      0
+      0.8vw
+      0
+      1.15vw;
+
+    gap: 0.9vw;
+
+    font-size: 0.7vw;
+  }
+
+  .cardArrowWrapper {
+    width: 0.85vw;
+    height: 1.05vw;
+    flex-basis: 0.85vw;
+  }
+
+  .cardArrow {
+    width: 0.55vw;
+    height: 0.95vw;
+  }
 }
 
 /* =========================================================
@@ -477,18 +612,24 @@
   .contentLayout {
     grid-template-columns:
       minmax(390px, 40%)
-      minmax(0, 1fr);
+      minmax(0, 53%);
 
     gap: 58px;
   }
 
   .insightsArea {
-    height: 650px;
+    height: 690px;
   }
 
   .cardExploreButton {
-    min-height: 59px;
-    padding-left: 21px;
+    min-width: 140px;
+    min-height: 45px;
+
+    margin-top: 14px;
+  }
+
+  .cardTitle {
+    font-size: clamp(14px, 1vw, 19px);
   }
 }
 
@@ -547,6 +688,11 @@
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
+
+  .cardExploreButton {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* =========================================================
@@ -567,11 +713,7 @@
   }
 
   .heading {
-    font-size: clamp(
-      40px,
-      11vw,
-      52px
-    );
+    font-size: clamp(40px, 11vw, 52px);
   }
 
   .description {
@@ -607,21 +749,26 @@
   }
 
   .cardType {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .cardTitle {
-    font-size: 17px;
+    max-width: 96%;
+
+    font-size: 20px;
+    line-height: 1.13;
   }
 
   .cardExploreButton {
-    right: 20px;
-    bottom: 20px;
-    left: 20px;
+    min-width: 142px;
+    min-height: 46px;
 
-    min-height: 64px;
+    margin-top: 15px;
 
-    font-size: 14px;
+    font-size: 13px;
+
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -630,11 +777,17 @@
    ========================================================= */
 
 :global(html.dark) .section {
-  background: #080808;
+  --insights-background: #080808;
+  --insights-text: #ffffff;
+  --insights-description: #ffffff;
+  --insights-glow-strong: rgba(0, 117, 104, 0.42);
+  --insights-glow-medium: rgba(0, 82, 76, 0.3);
+  --insights-glow-soft: rgba(0, 82, 76, 0.14);
 }
 
-:global(html.dark) .description {
-  color: #ffffff;
+:global(html.dark) .primaryButton:hover {
+  background: transparent;
+  color: var(--insights-accent);
 }
 
 /* =========================================================

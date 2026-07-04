@@ -33,11 +33,13 @@
   top: var(--navbar-height);
 
   width: 100%;
+
   height:
     calc(
       100vh -
       var(--navbar-height)
     );
+
   height:
     calc(
       100svh -
@@ -99,11 +101,16 @@
 
   position: absolute;
   top: 50%;
-  right: clamp(42px, 7vw, 130px);
+
+  /*
+    Increased right spacing and reduced width
+    create a clear gap between video and text.
+  */
+  right: clamp(74px, 8.4vw, 170px);
 
   z-index: 5;
 
-  width: min(35%, 540px);
+  width: min(31.5%, 500px);
 
   opacity:
     var(--career-content-opacity);
@@ -125,7 +132,7 @@
 
 .contentInner {
   width: 100%;
-  max-width: 510px;
+  max-width: 500px;
 }
 
 /* =========================================================
@@ -226,19 +233,75 @@
 }
 
 /* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .careersSection {
+    height: 210vh;
+  }
+
+  .careerContent {
+    /*
+      In 25% zoom, the animated video usually ends
+      around the left/middle area. This keeps the text
+      visually separated from the video edge.
+    */
+    right: 7vw;
+    width: 31vw;
+  }
+
+  .contentInner {
+    max-width: 27vw;
+  }
+
+  .eyebrow {
+    margin-bottom: 1.3vw;
+
+    font-size: 1.1vw;
+  }
+
+  .heading {
+    max-width: 27vw;
+
+    font-size: 3.7vw;
+  }
+
+  .description {
+    max-width: 27vw;
+    margin-top: 1.55vw;
+
+    font-size: 1.85vw;
+  }
+
+  .joinButton {
+    min-width: 7.2vw;
+    min-height: 3.45vw;
+
+    margin-top: 2.15vw;
+    padding-inline: 1.65vw;
+
+    border-width: 0.08vw;
+
+    font-size: 0.95vw;
+  }
+}
+
+/* =========================================================
    LARGE DESKTOP
    ========================================================= */
 
-@media (min-width: 1800px) {
+@media (min-width: 1800px) and (max-width: 2399px) {
   .careerContent {
-    right: max(
-      7vw,
-      calc(
-        (100vw - 1720px) / 2
-      )
-    );
+    right:
+      max(
+        8.4vw,
+        calc(
+          (100vw - 1640px) / 2
+        )
+      );
 
-    width: 35%;
+    width: min(31.5%, 500px);
   }
 }
 
@@ -248,24 +311,26 @@
 
 @media (max-width: 1350px) {
   .careerContent {
-    right: 52px;
-    width: 36%;
+    right: 70px;
+    width: 32%;
   }
 
   .heading {
-    font-size: clamp(
-      40px,
-      3.9vw,
-      55px
-    );
+    font-size:
+      clamp(
+        40px,
+        3.9vw,
+        55px
+      );
   }
 
   .description {
-    font-size: clamp(
-      20px,
-      2vw,
-      26px
-    );
+    font-size:
+      clamp(
+        20px,
+        2vw,
+        26px
+      );
   }
 }
 
@@ -327,21 +392,23 @@
   }
 
   .heading {
-    font-size: clamp(
-      42px,
-      7vw,
-      60px
-    );
+    font-size:
+      clamp(
+        42px,
+        7vw,
+        60px
+      );
   }
 
   .description {
     max-width: 650px;
 
-    font-size: clamp(
-      21px,
-      3.4vw,
-      29px
-    );
+    font-size:
+      clamp(
+        21px,
+        3.4vw,
+        29px
+      );
   }
 }
 
@@ -375,11 +442,12 @@
   }
 
   .heading {
-    font-size: clamp(
-      39px,
-      11vw,
-      50px
-    );
+    font-size:
+      clamp(
+        39px,
+        11vw,
+        50px
+      );
   }
 
   .description {
@@ -424,11 +492,13 @@
 
   .careerContent {
     opacity: 1;
-    transform: translate3d(
-      0,
-      -50%,
-      0
-    );
+
+    transform:
+      translate3d(
+        0,
+        -50%,
+        0
+      );
   }
 
   .joinButton {

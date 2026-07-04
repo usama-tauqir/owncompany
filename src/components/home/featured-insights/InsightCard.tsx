@@ -30,17 +30,17 @@ export default function InsightCard({
         sizes="
           (max-width: 700px) 92vw,
           (max-width: 1050px) 45vw,
-          22vw
+          18vw
         "
       />
 
       <span
-        className={styles.imageOverlay}
+        className={styles.blurOverlay}
         aria-hidden="true"
       />
 
       <span
-        className={styles.blurOverlay}
+        className={styles.imageOverlay}
         aria-hidden="true"
       />
 
@@ -52,28 +52,28 @@ export default function InsightCard({
         <span className={styles.cardTitle}>
           {insight.title}
         </span>
-      </span>
 
-      <span className={styles.cardExploreButton}>
-        <span>Explore More</span>
+        <span className={styles.cardExploreButton}>
+          <span>Explore More</span>
 
-        <span
-          className={styles.cardArrowWrapper}
-          aria-hidden="true"
-        >
-          <svg
-            className={styles.cardArrow}
-            viewBox="0 0 12 20"
-            fill="none"
+          <span
+            className={styles.cardArrowWrapper}
+            aria-hidden="true"
           >
-            <path
-              d="M1 1L10 10L1 19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            <svg
+              className={styles.cardArrow}
+              viewBox="0 0 11 21"
+              fill="none"
+            >
+              <path
+                d="M0.273 1.687L8.125 10L0.273 18.315"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </span>
       </span>
     </Link>

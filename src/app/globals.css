@@ -128,3 +128,49 @@
     @apply font-sans;
   }
 }
+.floatingContactButton {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+
+  z-index: 2147483647;
+
+  height: 180px;
+  width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px 0 0 12px;
+
+  background: #12bbb5;
+  color: white;
+
+  text-decoration: none;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  overflow: hidden;
+
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* vertical text like Devsinc */
+.floatingContactButton span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  white-space: nowrap;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* hover expansion (key Devsinc effect) */
+.floatingContactButton:hover {
+  width: 50px;
+  background: #0ea5a0;
+}

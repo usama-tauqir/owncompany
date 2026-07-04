@@ -49,26 +49,29 @@ export default function FeaturedInsightsSection() {
       const totalDistance =
         viewportHeight + sectionRect.height;
 
-      const progress =
-        (viewportHeight - sectionRect.top) /
-        totalDistance;
-
-      const normalizedProgress = Math.max(
+      const progress = Math.max(
         0,
-        Math.min(1, progress),
+        Math.min(
+          1,
+          (viewportHeight - sectionRect.top) /
+            totalDistance,
+        ),
       );
 
-      const movement =
-        (normalizedProgress - 0.5) * 70;
+      /*
+       * Devsinc-like movement:
+       * first column moves down while third moves up.
+       */
+      const movement = (progress - 0.5) * 18;
 
       firstColumn.style.setProperty(
         "--parallax-y",
-        `${movement}px`,
+        `${movement}%`,
       );
 
       thirdColumn.style.setProperty(
         "--parallax-y",
-        `${-movement}px`,
+        `${-movement}%`,
       );
     };
 
@@ -173,7 +176,7 @@ export default function FeaturedInsightsSection() {
                     ].join(" ")}
                     style={
                       {
-                        "--parallax-y": "0px",
+                        "--parallax-y": "0%",
                       } as ParallaxStyles
                     }
                   >

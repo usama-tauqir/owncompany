@@ -17,18 +17,9 @@ export default function HeroSection() {
         className={styles.backgroundOverlay}
         aria-hidden="true"
       />
-
       <div className={styles.contentContainer}>
         <HeroContent />
       </div>
-
-      <Link
-        href="/contact"
-        className={styles.floatingContactButton}
-        aria-label="Let's Talk Business"
-      >
-        <span>Let&apos;s Talk Business</span>
-      </Link>
     </section>
   );
 }
