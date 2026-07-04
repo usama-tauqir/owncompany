@@ -1,82 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import styles from "../../Navbar.module.css";
 
-interface IndustryLink {
-  label: string;
-  href: string;
+import type { IndustriesMegaMenuData } from "@/data/megaMenuData";
+
+import styles from "../MegaMenu.module.css";
+
+interface IndustriesMenuProps {
+  data?: IndustriesMegaMenuData;
 }
-
-export interface IndustriesMenuProps {
-  onNavigate: () => void;
-}
-
-const industries: IndustryLink[] = [
-  {
-    label: "Shopify",
-    href: "/industry/shopify",
-  },
-  {
-    label: "Travel & Hospitality",
-    href: "/industry/travel-hospitality",
-  },
-  {
-    label: "Public Sector",
-    href: "/industry/public-sector",
-  },
-  {
-    label: "Telecommunication",
-    href: "/industry/telecommunication",
-  },
-  {
-    label: "Retail & CPG",
-    href: "/industry/retail-and-cpg",
-  },
-  {
-    label: "Oil, Gas, and Energy",
-    href: "/industry/oil-gas-and-energy",
-  },
-  {
-    label: "Startups",
-    href: "/industry/startups",
-  },
-  {
-    label: "E-commerce",
-    href: "/industry/e-commerce-software-development",
-  },
-  {
-    label: "Banking & Fintech",
-    href: "/industry/banking-fintech",
-  },
-  {
-    label: "Healthcare & Pharmaceuticals",
-    href: "/industry/healthcare-pharmaceuticals",
-  },
-  {
-    label: "Gaming",
-    href: "/industry/gaming",
-  },
-];
 
 export default function IndustriesMenu({
-  onNavigate,
+  data,
 }: IndustriesMenuProps) {
-  return (
-    <div className={styles.industriesMenu}>
-      <h2 className={styles.megaMenuTitle}>Industries</h2>
+  if (!data?.links) {
+    return null;
+  }
 
-      <div className={styles.industriesGrid}>
-        {industries.map((industry) => (
-          <Link
-            key={industry.href}
-            href={industry.href}
-            className={styles.industryLink}
-            onClick={onNavigate}
-          >
-            {industry.label}
-          </Link>
-        ))}
+  return (
+    <div className={styles.megaMenuPanel}>
+      <div className={styles.megaMenuInner}>
+        <h2 className={styles.megaMenuTitle}>Industries</h2>
+
+        <div className={styles.industriesLayout}>
+          {data.links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={styles.industryLink}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

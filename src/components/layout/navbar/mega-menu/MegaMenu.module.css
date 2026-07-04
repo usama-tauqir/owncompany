@@ -1,0 +1,337 @@
+.megaMenuPanel {
+  position: fixed;
+  top: 82px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  width: 100%;
+  height: calc(100svh - 82px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #ffffff;
+  color: #000000;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.megaMenuInner {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding:
+    30px
+    0
+    80px
+    clamp(72px, 5.2vw, 110px);
+}
+
+.megaMenuTitle {
+  margin: 0 0 24px;
+
+  color: #000000;
+
+  font-size: clamp(48px, 3.25vw, 64px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+}
+
+.capabilitiesLayout {
+  width: min(100% - 120px, 1370px);
+
+  display: grid;
+  grid-template-columns: 420px 520px;
+  column-gap: clamp(260px, 29vw, 520px);
+  align-items: start;
+}
+
+.capabilitiesLeft,
+.capabilitiesRight {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.capabilitiesLeft {
+  gap: 28px;
+}
+
+.capabilitiesRight {
+  gap: 32px;
+  padding-top: 50px;
+}
+
+.megaMenuSection {
+  min-width: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 13px;
+
+  color: #000000;
+
+  font-size: clamp(27px, 1.82vw, 34px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+}
+
+.linkList {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menuLink {
+  display: inline-flex;
+  width: fit-content;
+
+  color: #000000;
+
+  font-size: clamp(19px, 1.28vw, 25px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.052em;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.menuLink:hover {
+  color: #13bbb5;
+  transform: translateX(6px);
+}
+
+.featuredLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.featuredMenuLink {
+  display: inline-flex;
+  width: fit-content;
+
+  color: #000000;
+
+  font-size: clamp(27px, 1.82vw, 34px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.featuredMenuLink:hover {
+  color: #13bbb5;
+  transform: translateX(6px);
+}
+
+.industriesLayout {
+  width: min(100% - 120px, 1100px);
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 120px;
+}
+
+.industryLink {
+  display: inline-flex;
+  width: fit-content;
+
+  color: #000000;
+
+  font-size: clamp(27px, 1.82vw, 34px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.065em;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.industryLink:hover {
+  color: #13bbb5;
+  transform: translateX(6px);
+}
+
+.simpleLayout {
+  width: min(100% - 120px, 1100px);
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 44px 130px;
+}
+
+/* Force mega menu same as Devsinc: white panel, black text */
+:global(html.dark) .megaMenuPanel {
+  background: #ffffff;
+  color: #000000;
+}
+
+:global(html.dark) .megaMenuTitle,
+:global(html.dark) .sectionTitle,
+:global(html.dark) .menuLink,
+:global(html.dark) .featuredMenuLink,
+:global(html.dark) .industryLink {
+  color: #000000;
+}
+
+:global(html.dark) .menuLink:hover,
+:global(html.dark) .featuredMenuLink:hover,
+:global(html.dark) .industryLink:hover {
+  color: #13bbb5;
+}
+
+@media (min-width: 2400px) {
+  .megaMenuPanel {
+    top: 4.15vw;
+    height: calc(100svh - 4.15vw);
+  }
+
+  .megaMenuInner {
+    padding:
+      1.45vw
+      0
+      4.2vw
+      5.2vw;
+  }
+
+  .megaMenuTitle {
+    margin-bottom: 1.2vw;
+    font-size: 3.25vw;
+  }
+
+  .capabilitiesLayout {
+    width: 78vw;
+    grid-template-columns: 23vw 29vw;
+    column-gap: 27vw;
+  }
+
+  .capabilitiesLeft {
+    gap: 1.42vw;
+  }
+
+  .capabilitiesRight {
+    gap: 1.62vw;
+    padding-top: 2.6vw;
+  }
+
+  .sectionTitle,
+  .featuredMenuLink,
+  .industryLink {
+    font-size: 1.82vw;
+  }
+
+  .sectionTitle {
+    margin-bottom: 0.68vw;
+  }
+
+  .linkList {
+    gap: 0.52vw;
+  }
+
+  .menuLink {
+    font-size: 1.28vw;
+  }
+
+  .featuredLinks {
+    gap: 1.3vw;
+  }
+}
+
+@media (max-width: 1450px) {
+  .megaMenuInner {
+    padding-left: 70px;
+  }
+
+  .capabilitiesLayout {
+    grid-template-columns: 390px 460px;
+    column-gap: 250px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .capabilitiesLayout {
+    width: min(100% - 90px, 1100px);
+
+    grid-template-columns: 1fr 1fr;
+    column-gap: 110px;
+  }
+}
+
+@media (max-width: 991px) {
+  .megaMenuPanel {
+    position: static;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+  }
+
+  .megaMenuInner {
+    width: min(100% - 48px, 860px);
+
+    margin-inline: auto;
+    padding:
+      28px
+      0
+      42px;
+  }
+
+  .megaMenuTitle {
+    margin-bottom: 24px;
+    font-size: 42px;
+  }
+
+  .capabilitiesLayout,
+  .industriesLayout,
+  .simpleLayout {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .capabilitiesRight {
+    padding-top: 0;
+  }
+
+  .sectionTitle,
+  .featuredMenuLink,
+  .industryLink {
+    font-size: 28px;
+  }
+
+  .menuLink {
+    font-size: 20px;
+  }
+}

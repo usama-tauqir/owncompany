@@ -41,6 +41,7 @@ export default function Navbar() {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
+  
   const {
     activeMenu,
     isMobileOpen,
@@ -289,12 +290,12 @@ export default function Navbar() {
   </div>
 
   <MegaMenu
-    activeMenu={activeMenu}
-    open={activeMenu !== null}
-    onMenuOpen={handleMenuOpen}
-    onMenuClose={closeMenu}
-    onNavigate={closeAll}
-  />
+  activeMenu={activeMenu}
+  open={activeMenu !== null}
+  onMenuOpen={handleMenuOpen}
+  onMenuClose={closeMenu}
+  onNavigate={closeAll}
+/>
 </header>
 
       {/* Dark page overlay shown behind desktop mega menus */}

@@ -4,7 +4,7 @@ export const capabilities: NavbarSection[] = [
   {
     title: "Digital Transformation",
     links: [
-      { label: "Web Development", href: "/services/web-development" },
+      { label: "Web Development", href: "/services/website-development" },
       { label: "App Development", href: "/services/app-development" },
       {
         label: "Custom Software Development",

@@ -1,73 +1,39 @@
 "use client";
 
-
-import {megaMenuData} from "@/data/megaMenuData";
-
+import { megaMenuData } from "@/data/megaMenuData";
 
 import CapabilitiesMenu from "./layouts/CapabilitiesMenu";
 import IndustriesMenu from "./layouts/IndustriesMenu";
 import SimpleListMenu from "./layouts/SimpleListMenu";
 
-
-interface Props{
-
-menu:string|null;
-
+interface MegaMenuPanelProps {
+  menu: string | null;
 }
-
-
 
 export default function MegaMenuPanel({
-menu
-}:Props){
+  menu,
+}: MegaMenuPanelProps) {
+  if (!menu) {
+    return null;
+  }
 
+  const data = megaMenuData[menu];
 
-if(!menu)
-return null;
+  if (!data) {
+    return null;
+  }
 
+  if (data.type === "capabilities") {
+    return <CapabilitiesMenu data={data} />;
+  }
 
+  if (data.type === "industries") {
+    return <IndustriesMenu data={data} />;
+  }
 
-const data = megaMenuData[menu];
+  if (data.type === "simple") {
+    return <SimpleListMenu data={data} />;
+  }
 
-
-
-if(!data)
-return null;
-
-
-
-switch(data.type){
-
-
-case "capabilities":
-
-return (
-<CapabilitiesMenu data={data}/>
-);
-
-
-
-case "industries":
-
-return (
-<IndustriesMenu data={data}/>
-);
-
-
-
-case "simple":
-
-return (
-<SimpleListMenu data={data}/>
-);
-
-
-
-default:
-
-return null;
-
-
-}
-
+  return null;
 }

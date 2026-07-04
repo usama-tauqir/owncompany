@@ -1,0 +1,63 @@
+.processDiagram {
+  position: relative;
+  z-index: 5;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  font-family:
+    "ITC Avant Garde Gothic",
+    "Century Gothic",
+    "Avenir Next",
+    Arial,
+    sans-serif;
+}
+
+.processDiagram,
+.processDiagram *,
+.processDiagram *::before,
+.processDiagram *::after {
+  box-sizing: border-box;
+}
+
+.processImage {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* =========================================================
+   25% ZOOM / VERY WIDE VIEWPORT
+   ========================================================= */
+
+@media (min-width: 2400px) {
+  .processDiagram {
+    width: 100%;
+  }
+
+  .processImage {
+    width: 100vw;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .processDiagram {
+    overflow-x: auto;
+  }
+
+  .processImage {
+    width: 1100px;
+    max-width: none;
+  }
+}

@@ -1,41 +1,52 @@
 "use client";
 
 import Link from "next/link";
-import styles from "../../Navbar.module.css";
 
-export interface SimpleListMenuLink {
-  label: string;
-  href: string;
-}
+import type { SimpleMegaMenuData } from "@/data/megaMenuData";
 
-export interface SimpleListMenuProps {
-  links: SimpleListMenuLink[];
-  onNavigate: () => void;
-  title?: string;
+import styles from "../MegaMenu.module.css";
+
+interface SimpleListMenuProps {
+  data?: SimpleMegaMenuData;
 }
 
 export default function SimpleListMenu({
-  links,
-  onNavigate,
-  title,
+  data,
 }: SimpleListMenuProps) {
-  return (
-    <div className={styles.simpleListMenu}>
-      {title ? (
-        <h2 className={styles.megaMenuTitle}>{title}</h2>
-      ) : null}
+  if (!data?.sections) {
+    return null;
+  }
 
-      <div className={styles.simpleListLinks}>
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={styles.simpleListLink}
-            onClick={onNavigate}
-          >
-            {link.label}
-          </Link>
-        ))}
+  return (
+    <div className={styles.megaMenuPanel}>
+      <div className={styles.megaMenuInner}>
+        <h2 className={styles.megaMenuTitle}>{data.title}</h2>
+
+        <div className={styles.simpleLayout}>
+          {data.sections.map((section) => (
+            <div
+              key={section.title}
+              className={styles.megaMenuSection}
+            >
+              <h3 className={styles.sectionTitle}>
+                {section.title}
+              </h3>
+
+              <ul className={styles.linkList}>
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={styles.menuLink}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
