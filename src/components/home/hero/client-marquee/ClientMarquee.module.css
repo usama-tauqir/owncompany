@@ -217,3 +217,12 @@
     display: none;
   }
 }
+/* Text wordmark used until real client logos are added */
+.clientWordmark {
+  display: inline-block;
+  font-size: clamp(16px, 1.3vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  opacity: 0.7;
+}

@@ -1,38 +1,21 @@
+import { siteConfig } from "@/config/site";
+
 import styles from "./Footer.module.css";
 
-interface SocialLink {
-  name: string;
-  href: string;
-  icon: "facebook" | "linkedin" | "instagram" | "x";
-}
+type SocialIconType = "facebook" | "linkedin" | "instagram" | "x" | "youtube";
 
-const socialLinks: SocialLink[] = [
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/developers.incorporated",
-    icon: "facebook",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/company/developers-inc",
-    icon: "linkedin",
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/devsinc.official/",
-    icon: "instagram",
-  },
-  {
-    name: "X",
-    href: "https://x.com/devsinc",
-    icon: "x",
-  },
-];
+const iconFor: Record<string, SocialIconType> = {
+  Facebook: "facebook",
+  LinkedIn: "linkedin",
+  Instagram: "instagram",
+  X: "x",
+  YouTube: "youtube",
+};
 
 function SocialIcon({
   type,
 }: {
-  type: SocialLink["icon"];
+  type: SocialIconType;
 }) {
   if (type === "facebook") {
     return (
@@ -51,6 +34,17 @@ function SocialIcon({
         <path
           fill="currentColor"
           d="M19 3C20.1 3 21 3.9 21 5V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H19ZM18.5 18.5V13.2C18.5 11.4 17.04 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C15.08 12.17 15.71 12.8 15.71 13.57V18.5H18.5ZM6.88 8.56C7.81 8.56 8.56 7.81 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C5.95 5.19 5.19 5.95 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "youtube") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"
         />
       </svg>
     );
@@ -102,16 +96,16 @@ function SocialIcon({
 export default function FooterSocials() {
   return (
     <div className={styles.socialLinks}>
-      {socialLinks.map((social) => (
+      {siteConfig.socials.map((social) => (
         <a
           key={social.name}
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.socialLink}
-          aria-label={`Visit Devsinc on ${social.name}`}
+          aria-label={`Visit ${siteConfig.name} on ${social.name}`}
         >
-          <SocialIcon type={social.icon} />
+          <SocialIcon type={iconFor[social.name] ?? "x"} />
         </a>
       ))}
     </div>

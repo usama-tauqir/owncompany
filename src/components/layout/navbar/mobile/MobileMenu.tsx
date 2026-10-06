@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import MobileAccordion, {
-  type MobileAccordionItem,
-} from "./MobileAccordion";
+
+import { siteConfig } from "@/config/site";
+import { megaMenuData, type MegaMenuLink } from "@/data/megaMenuData";
+import { useLocale } from "@/i18n/useLocale";
+
+import MobileAccordion, { type MobileAccordionItem } from "./MobileAccordion";
 import styles from "../Navbar.module.css";
 
 export interface MobileMenuProps {
@@ -11,168 +14,69 @@ export interface MobileMenuProps {
   onClose: () => void;
 }
 
-export default function MobileMenu({
-  onNavigate,
-  onClose,
-}: MobileMenuProps) {
+/** Flattens a mega menu entry into a single list of links. */
+function linksFor(menuId: string): MegaMenuLink[] {
+  const data = megaMenuData[menuId];
+  if (!data) return [];
+  if (data.type === "industries") return data.links;
+  return data.sections.flatMap((section) => section.links);
+}
+
+export default function MobileMenu({ onNavigate, onClose }: MobileMenuProps) {
+  const { dict } = useLocale();
+
   const handleNavigate = () => {
     onClose();
     onNavigate();
   };
 
-  const accordionItems: MobileAccordionItem[] = [
+  const groups: Array<{ id: string; label: string; overview?: MegaMenuLink }> = [
     {
       id: "what-we-do",
-      label: "What we do",
-      content: (
-        <div className={styles.mobileAccordionLinks}>
-          <Link href="/services" onClick={handleNavigate}>
-            Services
-          </Link>
-
-          <Link
-            href="/services/web-development"
-            onClick={handleNavigate}
-          >
-            Web Development
-          </Link>
-
-          <Link
-            href="/services/mobile-development"
-            onClick={handleNavigate}
-          >
-            App Development
-          </Link>
-
-          <Link
-            href="/services/custom-development"
-            onClick={handleNavigate}
-          >
-            Custom Software Development
-          </Link>
-        </div>
-      ),
+      label: dict.nav.whatWeDo,
+      overview: { label: dict.menuSections.viewAllServices, href: "/services" },
     },
     {
       id: "who-we-help",
-      label: "Who we help",
-      content: (
-        <div className={styles.mobileAccordionLinks}>
-          <Link href="/industries" onClick={handleNavigate}>
-            Industries
-          </Link>
-
-          <Link
-            href="/industry/banking-fintech"
-            onClick={handleNavigate}
-          >
-            Banking &amp; Fintech
-          </Link>
-
-          <Link
-            href="/industry/healthcare-pharmaceuticals"
-            onClick={handleNavigate}
-          >
-            Healthcare &amp; Pharmaceuticals
-          </Link>
-
-          <Link
-            href="/industry/travel-hospitality"
-            onClick={handleNavigate}
-          >
-            Travel &amp; Hospitality
-          </Link>
-        </div>
-      ),
+      label: dict.nav.whoWeHelp,
+      overview: { label: dict.menuSections.viewAllIndustries, href: "/industry" },
     },
-    {
-      id: "who-we-are",
-      label: "Who We Are",
-      content: (
-        <div className={styles.mobileAccordionLinks}>
-          <Link href="/about" onClick={handleNavigate}>
-            About
-          </Link>
-
-          <Link href="/about#leadership" onClick={handleNavigate}>
-            Leadership
-          </Link>
-
-          <Link href="/about#geographies" onClick={handleNavigate}>
-            Geographies
-          </Link>
-
-          <Link href="/about#values" onClick={handleNavigate}>
-            Code of Conduct &amp; Values
-          </Link>
-        </div>
-      ),
-    },
-    {
-      id: "how-we-deliver",
-      label: "How we deliver",
-      content: (
-        <div className={styles.mobileAccordionLinks}>
-          <Link href="/learning" onClick={handleNavigate}>
-            Blogs
-          </Link>
-
-          <Link href="/case-studies" onClick={handleNavigate}>
-            Case Studies
-          </Link>
-
-          <Link href="/news" onClick={handleNavigate}>
-            News
-          </Link>
-        </div>
-      ),
-    },
-    {
-      id: "join-devsinc",
-      label: "Join devsinc",
-      content: (
-        <div className={styles.mobileAccordionLinks}>
-          <Link href="/careers" onClick={handleNavigate}>
-            Careers
-          </Link>
-
-          <Link href="/careers#culture" onClick={handleNavigate}>
-            Culture
-          </Link>
-
-          <Link href="/careers#benefits" onClick={handleNavigate}>
-            Benefits
-          </Link>
-        </div>
-      ),
-    },
+    { id: "who-we-are", label: dict.nav.whoWeAre },
+    { id: "how-we-deliver", label: dict.nav.howWeDeliver },
+    { id: "join", label: `${dict.nav.join} ${siteConfig.shortName}` },
+    { id: "global", label: dict.nav.region },
   ];
 
+  const accordionItems: MobileAccordionItem[] = groups.map((group) => ({
+    id: group.id,
+    label: group.label,
+    content: (
+      <div className={styles.mobileAccordionLinks}>
+        {group.overview && (
+          <Link href={group.overview.href} onClick={handleNavigate}>
+            <strong>{group.overview.label}</strong>
+          </Link>
+        )}
+        {linksFor(group.id).map((link) => (
+          <Link key={link.href + link.label} href={link.href} onClick={handleNavigate}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    ),
+  }));
+
   return (
-    <nav
-      className={styles.mobileMenu}
-      aria-label="Mobile navigation"
-    >
-      <MobileAccordion
-        items={accordionItems}
-        className={styles.mobileAccordion}
-      />
+    <nav className={styles.mobileMenu} aria-label="Mobile navigation">
+      <MobileAccordion items={accordionItems} className={styles.mobileAccordion} />
 
       <div className={styles.mobileMenuActions}>
-        <Link
-          href="/careers"
-          className={styles.mobilePrimaryButton}
-          onClick={handleNavigate}
-        >
-          Explore Careers
+        <Link href="/career" className={styles.mobilePrimaryButton} onClick={handleNavigate}>
+          {dict.footer.careers}
         </Link>
 
-        <Link
-          href="/contact"
-          className={styles.mobileSecondaryButton}
-          onClick={handleNavigate}
-        >
-          Let&apos;s Talk Business
+        <Link href="/contact" className={styles.mobileSecondaryButton} onClick={handleNavigate}>
+          {dict.nav.letsTalkBusiness}
         </Link>
       </div>
     </nav>

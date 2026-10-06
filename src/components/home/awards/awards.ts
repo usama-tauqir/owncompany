@@ -5,63 +5,58 @@ export interface AwardItemData {
   height: number;
 }
 
+/*
+ * Placeholder recognitions rendered as text badges.
+ * Only list awards and certifications your company actually holds,
+ * and add the badge artwork via `image` once you have it.
+ */
 export const awards: AwardItemData[] = [
   {
-    name: "Clutch Top Staff Augmentation Company",
-    image:
-      "/images/home/awards/clutch-staff-augmentation.webp",
+    name: "Top Software Developer",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "Clutch Top Web Developers",
-    image:
-      "/images/home/awards/clutch-web-development.webp",
+    name: "Top Web Development Partner",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "Clutch Top Web Developers Retail",
-    image: "/images/home/awards/clutch-retail.webp",
+    name: "Top Retail Technology Partner",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "Clutch Top AI and VR Development Company",
-    image: "/images/home/awards/clutch-ai-vr.webp",
+    name: "Top AI & XR Developer",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "Clutch Top Software Developers",
-    image:
-      "/images/home/awards/clutch-software-development.webp",
+    name: "Most Reviewed App Developer",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "Most Reviewed App Development Company",
-    image:
-      "/images/home/awards/app-development-award.webp",
-    width: 138,
-    height: 170,
-  },
-  {
-    name: "Clutch Top Software Developers Gaming",
-    image: "/images/home/awards/clutch-gaming.webp",
+    name: "Top Gaming Studio",
+    image: "",
     width: 168,
     height: 168,
   },
   {
-    name: "ISO 9001 2015 Certified Company",
-    image: "/images/home/awards/iso-9001.webp",
-    width: 162,
-    height: 162,
+    name: "Quality Management Certified",
+    image: "",
+    width: 168,
+    height: 168,
   },
   {
-    name: "ISO 27001 Certified Company",
-    image: "/images/home/awards/iso-27001.webp",
-    width: 162,
-    height: 162,
+    name: "Information Security Certified",
+    image: "",
+    width: 168,
+    height: 168,
   },
 ];

@@ -1,0 +1,196 @@
+/* Template-specific styles; shared tokens live in Blocks.module.css (.blockWrap). */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Listing toolbar ---------- */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 260px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.search input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.empty {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* ---------- Article ---------- */
+
+.articleHero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(110px, 14vw, 180px) clamp(56px, 7vw, 96px);
+  color: #fff;
+  background: var(--navy);
+}
+
+.articleArt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.articleShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(4, 11, 35, 0.35), rgba(4, 11, 35, 0.85));
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-block-end: 28px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: #fff;
+}
+
+.articleTitle {
+  margin: 0;
+  font-size: clamp(34px, 4vw, 60px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.articleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+}
+
+.lede {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.proseHeading {
+  margin: 44px 0 14px;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.caseSummary {
+  padding-block: 40px;
+  background: var(--surface);
+}
+
+.caseFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 0 0 28px;
+}
+
+.caseFacts dt {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-dark);
+}
+
+.caseFacts dd {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.caseResults {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .caseResults {
+    grid-template-columns: 1fr;
+  }
+}
+
+.caseResults li {
+  display: grid;
+  gap: 6px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.caseResults strong {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--teal-dark);
+}
+
+.caseResults span {
+  color: var(--muted);
+}
+
+/* ---------- Catalogue (services / industries index) ---------- */
+
+.catalogGroup {
+  padding-block: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.catalogGroup:last-child {
+  border-bottom: 0;
+}
+
+.catalogHeading {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 800;
+}

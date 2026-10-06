@@ -1,9 +1,13 @@
+import { siteConfig } from "@/config/site";
+
 export type MegaMenuLink = {
   label: string;
   href: string;
 };
 
 export type MegaMenuSection = {
+  /** stable key used for layout + translation (see i18n menuSections) */
+  id?: string;
   title: string;
   links: MegaMenuLink[];
 };
@@ -34,6 +38,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
     type: "capabilities",
     sections: [
       {
+        id: "digitalTransformation",
         title: "Digital Transformation",
         links: [
           {
@@ -55,6 +60,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         ],
       },
       {
+        id: "businessApplications",
         title: "Business Applications",
         links: [
           {
@@ -76,6 +82,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         ],
       },
       {
+        id: "shopify",
         title: "Shopify",
         links: [
           {
@@ -93,6 +100,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         ],
       },
       {
+        id: "emergingTechnologies",
         title: "Emerging Technologies",
         links: [
           {
@@ -138,6 +146,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         ],
       },
       {
+        id: "gaming",
         title: "Gaming",
         links: [
           {
@@ -155,6 +164,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         ],
       },
       {
+        id: "cloud",
         title: "Cloud",
         links: [
           {
@@ -169,6 +179,18 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
             label: "Cloud maintenance & integration",
             href: "/services/cloud-maintenance-integration",
           },
+        ],
+      },
+      {
+        id: "studiosAdvisory",
+        title: "Studios & Advisory",
+        links: [
+          { label: "AI & Data Systems", href: "/services/ai-data-systems" },
+          { label: "Product Studio", href: "/services/product-studio" },
+          { label: "Game Development", href: "/services/game-development" },
+          { label: "Advisory & Strategy", href: "/services/advisory-strategy" },
+          { label: "Payment as a Service", href: "/services/payment-as-a-service" },
+          { label: "Architectural Visualization", href: "/services/architectural-visualization" },
         ],
       },
     ],
@@ -220,6 +242,14 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
       {
         label: "Gaming",
         href: "/industry/gaming",
+      },
+      {
+        label: "Real Estate",
+        href: "/industry/real-estate",
+      },
+      {
+        label: "Education",
+        href: "/industry/education",
       },
     ],
   },
@@ -312,9 +342,9 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
     ],
   },
 
-  "join-devsinc": {
+  join: {
     type: "simple",
-    title: "Join Devsinc",
+    title: `Join ${siteConfig.shortName}`,
     sections: [
       {
         title: "Careers",
@@ -357,7 +387,7 @@ export const megaMenuData: Record<string, MegaMenuDataItem> = {
         links: [
           {
             label: "Global",
-            href: "/global",
+            href: "/",
           },
           {
             label: "MENA",

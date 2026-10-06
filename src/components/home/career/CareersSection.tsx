@@ -266,12 +266,12 @@ export default function CareersSection() {
               id="careers-heading"
               className={styles.heading}
             >
-              Human-first is our foundation.
+              People first, always.
             </h2>
 
             <p className={styles.description}>
-              Join a culture that celebrates
-              excellence and diversity, Globally!
+              Grow with teams that value craft,
+              curiosity and each other, wherever you are.
             </p>
 
             <Link

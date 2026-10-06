@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+
+import Icon from "@/components/blocks/Icon";
 
 import type { IndustryItemData } from "./industries";
 
@@ -19,14 +20,7 @@ export default function IndustryItem({
       aria-label={`Explore ${industry.title}`}
     >
       <span className={styles.industryContent}>
-        <Image
-          src={industry.icon}
-          alt=""
-          width={34}
-          height={34}
-          className={styles.industryIcon}
-          aria-hidden="true"
-        />
+        <Icon name={industry.icon} size={34} className={styles.industryIcon} />
 
         <span className={styles.industryTitle}>
           {industry.title}

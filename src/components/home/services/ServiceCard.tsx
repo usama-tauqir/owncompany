@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import Art from "@/components/blocks/Art";
+
 import type { ServiceItem } from "./services";
 
 import styles from "./ServicesSection.module.css";
@@ -18,6 +20,7 @@ export default function ServiceCard({
       className={styles.serviceCard}
       aria-label={`View ${service.title} service`}
     >
+      {service.image ? (
       <Image
         src={service.image}
         alt={service.title}
@@ -33,6 +36,9 @@ export default function ServiceCard({
           23vw
         "
       />
+      ) : (
+        <Art seed={service.href} className={styles.serviceImage} variant="card" />
+      )}
 
       <div
         className={styles.cardDarkOverlay}

@@ -9,38 +9,38 @@ export const services: ServiceItem[] = [
   {
     title: "Generative AI",
     href: "/services/genai",
-    image: "/images/home/services/generative-ai.avif",
+    image: "",
   },
   {
     title: "Dynamics 365 ERP",
     href: "/services/d365-erp",
-    image: "/images/home/services/dynamics-365-erp.avif",
+    image: "",
   },
   {
     title: "Mobile App Development",
     href: "/services/mobile-development",
-    image: "/images/home/services/mobile-app-development.avif",
+    image: "",
   },
   {
     title: "Staff Augmentation",
     href: "/services/staff-augmentation",
-    image: "/images/home/services/staff-augmentation.avif",
+    image: "",
     imagePosition: "center top",
   },
   {
     title: "DevOps",
     href: "/services/devops",
-    image: "/images/home/services/devops.avif",
+    image: "",
   },
   {
     title: "UI/UX Design",
     href: "/services/ui-ux-design",
-    image: "/images/home/services/ui-ux-design.avif",
+    image: "",
   },
   {
     title: "Web Development",
     href: "/services/website-development",
-    image: "/images/home/services/web-development.avif",
+    image: "",
   },
   {
     title: "Custom Software Development",
@@ -51,27 +51,27 @@ export const services: ServiceItem[] = [
   {
     title: "Cybersecurity",
     href: "/services/cybersecurity-solutions",
-    image: "/images/home/services/cybersecurity.avif",
+    image: "",
   },
   {
     title: "Data Analytics & Insights",
     href: "/services/data-analytics-and-insights",
-    image: "/images/home/services/data-analytics.avif",
+    image: "",
   },
   {
     title: "MS D365 CRM",
     href: "/services/d365-crm",
-    image: "/images/home/services/d365-crm.avif",
+    image: "",
   },
   {
     title: "Power Apps",
     href: "/services/power-apps",
-    image: "/images/home/services/power-apps.avif",
+    image: "",
   },
   {
     title: "Cloud Application",
     href: "/services/cloud-application",
-    image: "/images/home/services/cloud-application.avif",
+    image: "",
   },
   {
     title: "Cloud Maintenance & Integration",
@@ -82,47 +82,47 @@ export const services: ServiceItem[] = [
   {
     title: "Metaverse",
     href: "/services/metaverse",
-    image: "/images/home/services/metaverse.avif",
+    image: "",
   },
   {
     title: "Augmented Reality",
     href: "/services/augmented-reality",
-    image: "/images/home/services/augmented-reality.avif",
+    image: "",
   },
   {
     title: "Blockchain & Cryptography",
     href: "/services/blockchain-cryptography",
-    image: "/images/home/services/blockchain-cryptography.avif",
+    image: "",
   },
   {
     title: "Game Development",
     href: "/services/game-development",
-    image: "/images/home/services/game-development.avif",
+    image: "",
   },
   {
     title: "Web3 Gaming",
     href: "/services/web3-gaming",
-    image: "/images/home/services/web3-gaming.avif",
+    image: "",
   },
   {
     title: "AR/VR/XR Gaming",
     href: "/services/ar-vr-xr-gaming",
-    image: "/images/home/services/ar-vr-xr-gaming.avif",
+    image: "",
   },
   {
     title: "Gaming Art & Design",
     href: "/services/gaming-art-design",
-    image: "/images/home/services/gaming-art-design.avif",
+    image: "",
   },
   {
     title: "Quality Assurance",
     href: "/services/quality-assurance",
-    image: "/images/home/services/quality-assurance.avif",
+    image: "",
   },
   {
     title: "SaaS",
     href: "/services/saas",
-    image: "/images/home/services/saas.avif",
+    image: "",
   },
   {
     title: "Cloud Migration & Cloud Ops",
@@ -133,26 +133,26 @@ export const services: ServiceItem[] = [
   {
     title: "Shopify",
     href: "/services/shopify",
-    image: "/images/home/services/shopify.avif",
+    image: "",
   },
   {
     title: "Design & Development",
     href: "/services/design-development",
-    image: "/images/home/services/design-development.avif",
+    image: "",
   },
   {
     title: "Maintenance & Support",
     href: "/services/maintenance-support",
-    image: "/images/home/services/maintenance-support.avif",
+    image: "",
   },
   {
     title: "Automation & Apps",
     href: "/services/automation-apps",
-    image: "/images/home/services/automation-apps.avif",
+    image: "",
   },
   {
     title: "Salesforce",
     href: "/services/salesforce",
-    image: "/images/home/services/salesforce.avif",
+    image: "",
   },
 ];

@@ -190,7 +190,7 @@
   gap: 44px 130px;
 }
 
-/* Force mega menu same as Devsinc: white panel, black text */
+/* Mega menu: white panel, black text */
 :global(html.dark) .megaMenuPanel {
   background: #ffffff;
   color: #000000;
@@ -334,4 +334,23 @@
   .menuLink {
     font-size: 20px;
   }
+}
+/* Capabilities grid: one column per service category */
+.capabilitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 40px;
+  margin-bottom: 28px;
+  padding-inline-end: clamp(32px, 5vw, 110px);
+}
+
+@media (max-width: 1200px) {
+  .capabilitiesGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+:global([dir="rtl"]) .megaMenuPanel {
+  direction: rtl;
+  text-align: right;
 }

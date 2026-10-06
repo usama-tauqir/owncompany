@@ -7,6 +7,8 @@ import type {
   MegaMenuSection,
 } from "@/data/megaMenuData";
 
+import { useLocale } from "@/i18n/useLocale";
+
 import styles from "../MegaMenu.module.css";
 
 interface CapabilitiesMenuProps {
@@ -16,33 +18,26 @@ interface CapabilitiesMenuProps {
 export default function CapabilitiesMenu({
   data,
 }: CapabilitiesMenuProps) {
+  const { dict } = useLocale();
+
   if (!data?.sections) {
     return null;
   }
 
-  const digitalTransformation = data.sections.find(
-    (section) => section.title === "Digital Transformation",
-  );
+  const titles = dict.menuSections as Record<string, string>;
 
-  const businessApplications = data.sections.find(
-    (section) => section.title === "Business Applications",
-  );
+  const find = (id: string) => {
+    const section = data.sections.find((item) => item.id === id);
+    return section ? { ...section, title: titles[id] ?? section.title } : undefined;
+  };
 
-  const shopify = data.sections.find(
-    (section) => section.title === "Shopify",
-  );
-
-  const emergingTechnologies = data.sections.find(
-    (section) => section.title === "Emerging Technologies",
-  );
-
-  const gaming = data.sections.find(
-    (section) => section.title === "Gaming",
-  );
-
-  const cloud = data.sections.find(
-    (section) => section.title === "Cloud",
-  );
+  const digitalTransformation = find("digitalTransformation");
+  const businessApplications = find("businessApplications");
+  const shopify = find("shopify");
+  const emergingTechnologies = find("emergingTechnologies");
+  const gaming = find("gaming");
+  const cloud = find("cloud");
+  const studiosAdvisory = find("studiosAdvisory");
 
   const emergingNormalLinks =
     emergingTechnologies?.links.slice(0, 6) ?? [];
@@ -53,7 +48,7 @@ export default function CapabilitiesMenu({
   return (
     <section className={styles.megaMenuPanel}>
       <div className={styles.megaMenuInner}>
-        <h2 className={styles.megaMenuTitle}>Capabilities</h2>
+        <h2 className={styles.megaMenuTitle}>{dict.nav.whatWeDo}</h2>
 
         <div className={styles.capabilitiesGrid}>
           {digitalTransformation && (
@@ -90,7 +85,13 @@ export default function CapabilitiesMenu({
           {gaming && <MenuSection section={gaming} />}
 
           {cloud && <MenuSection section={cloud} />}
+
+          {studiosAdvisory && <MenuSection section={studiosAdvisory} />}
         </div>
+
+        <Link href="/services" className={styles.featuredMenuLink}>
+          {dict.menuSections.viewAllServices} →
+        </Link>
       </div>
     </section>
   );

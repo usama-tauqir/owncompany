@@ -368,3 +368,17 @@
     transition: none;
   }
 }
+/* Text badge used until award artwork is added */
+.awardBadge {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border-radius: 50%;
+  border: 2px solid #13bbb5;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.25;
+}

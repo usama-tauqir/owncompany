@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Art from "@/components/blocks/Art";
+
 import type { Leader } from "./leaders";
 
 import styles from "./LeadershipSection.module.css";
@@ -17,6 +19,7 @@ export default function LeaderCard({
       data-leader-card
     >
       <div className={styles.imageFrame}>
+        {leader.image ? (
         <Image
           src={leader.image}
           alt={leader.firstName}
@@ -32,6 +35,9 @@ export default function LeaderCard({
             450px
           "
         />
+        ) : (
+          <Art seed={leader.id} className={styles.leaderImage} variant="card" />
+        )}
       </div>
 
       <div className={styles.leaderInformation}>

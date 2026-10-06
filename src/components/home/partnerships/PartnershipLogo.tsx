@@ -13,6 +13,7 @@ export default function PartnershipLogo({
 }: PartnershipLogoProps) {
   return (
     <div className={styles.partnerItem}>
+      {partnership.image ? (
       <Image
         src={partnership.image}
         alt={partnership.name}
@@ -25,6 +26,9 @@ export default function PartnershipLogo({
           180px
         "
       />
+      ) : (
+        <span className={styles.partnerWordmark}>{partnership.name}</span>
+      )}
     </div>
   );
 }

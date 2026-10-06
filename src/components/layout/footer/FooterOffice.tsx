@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { FooterOfficeData } from "./footerData";
 
 import styles from "./Footer.module.css";
@@ -19,13 +17,9 @@ export default function FooterOffice({
           <span>({office.officeType})</span>
         </h3>
 
-        <Image
-          src={office.flag}
-          alt={`${office.country} flag`}
-          width={35}
-          height={20}
-          className={styles.officeFlag}
-        />
+        <span className={styles.officeFlag} role="img" aria-label={`${office.country} flag`}>
+          {office.flag}
+        </span>
       </div>
 
       <address className={styles.officeAddress}>

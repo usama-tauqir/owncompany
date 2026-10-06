@@ -1,63 +1,65 @@
+import type { IconName } from "@/content/types";
+
 export interface IndustryItemData {
   title: string;
   href: string;
-  icon: string;
+  icon: IconName;
 }
 
 export const industries: IndustryItemData[] = [
   {
     title: "Shopify",
     href: "/industry/shopify",
-    icon: "/images/home/industries/shopify.svg",
+    icon: "cart",
   },
   {
     title: "Travel & Hospitality",
     href: "/industry/travel-hospitality",
-    icon: "/images/home/industries/travel-hospitality.svg",
+    icon: "plane",
   },
   {
     title: "Public Sector",
     href: "/industry/public-sector",
-    icon: "/images/home/industries/public-sector.svg",
+    icon: "building",
   },
   {
     title: "Telecommunication",
     href: "/industry/telecommunication",
-    icon: "/images/home/industries/telecommunication.svg",
+    icon: "radio",
   },
   {
     title: "Retail & CPG",
     href: "/industry/retail-and-cpg",
-    icon: "/images/home/industries/retail-cpg.svg",
+    icon: "store",
   },
   {
     title: "Oil, Gas, and Energy",
     href: "/industry/oil-gas-and-energy",
-    icon: "/images/home/industries/oil-gas-energy.svg",
+    icon: "fuel",
   },
   {
     title: "Startups",
     href: "/industry/startups",
-    icon: "/images/home/industries/startups.svg",
+    icon: "rocket",
   },
   {
     title: "E-commerce",
     href: "/industry/e-commerce-software-development",
-    icon: "/images/home/industries/ecommerce.svg",
+    icon: "cart",
   },
   {
     title: "Banking & Fintech",
     href: "/industry/banking-fintech",
-    icon: "/images/home/industries/banking-fintech.svg",
+    icon: "bank",
   },
   {
     title: "Healthcare & Pharmaceuticals",
     href: "/industry/healthcare-pharmaceuticals",
-    icon: "/images/home/industries/healthcare.svg",
+    icon: "health",
   },
   {
     title: "Gaming",
     href: "/industry/gaming",
-    icon: "/images/home/industries/gaming.svg",
+    icon: "gamepad",
   },
 ];

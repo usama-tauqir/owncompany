@@ -1,16 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
-import Link from "next/link";
+import { FloatingContact, LocaleSync } from "@/components/layout/global/LocaleSync";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const tajawal = Tajawal({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-arabic",
 });
 
 export const metadata: Metadata = {
-  title: "Own Company",
-  description: "Technology solutions company",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    siteName: siteConfig.name,
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -19,23 +35,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <body className={`${inter.className} ${inter.variable} ${tajawal.variable}`}>
+        <LocaleSync />
 
         <Navbar />
 
         {children}
 
         {/* GLOBAL FLOATING BUTTON (VISIBLE ON ALL PAGES) */}
-        <Link
-          href="/contact"
-          className="floatingContactButton"
-          aria-label="Let's Talk Business"
-        >
-          <span>Let&apos;s Talk Business</span>
-          
-        </Link>
-
+        <FloatingContact />
       </body>
     </html>
   );

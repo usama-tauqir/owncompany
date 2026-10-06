@@ -157,7 +157,7 @@
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* vertical text like Devsinc */
+/* vertical tab label */
 .floatingContactButton span {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -169,8 +169,24 @@
   letter-spacing: 0.5px;
 }
 
-/* hover expansion (key Devsinc effect) */
+/* hover expansion */
 .floatingContactButton:hover {
   width: 50px;
   background: #0ea5a0;
+}
+/* Right-to-left (Arabic regional pages) */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic), "Noto Kufi Arabic", Tahoma, sans-serif;
+}
+
+html[dir="rtl"] .floatingContactButton {
+  right: auto;
+  left: 0;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Guard against decorative elements (marquees, artwork) creating sideways scroll */
+html,
+body {
+  overflow-x: clip;
 }

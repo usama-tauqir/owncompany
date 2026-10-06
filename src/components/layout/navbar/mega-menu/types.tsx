@@ -3,14 +3,13 @@ export type MenuId =
   | "who-we-help"
   | "who-we-are"
   | "how-we-deliver"
-  | "join-devsinc";
+  | "join";
 
 export interface NavigationLink {
   label: string;
   href: string;
 }
 
-/* ✅ ADD THIS (THIS IS WHAT YOU ARE MISSING) */
 export interface NavbarSection {
   title: string;
   links: NavigationLink[];

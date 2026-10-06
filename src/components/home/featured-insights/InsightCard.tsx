@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import Art from "@/components/blocks/Art";
+
 import type { InsightItem } from "./insights";
 
 import styles from "./FeaturedInsightsSection.module.css";
@@ -18,6 +20,7 @@ export default function InsightCard({
       className={styles.insightCard}
       aria-label={`Explore ${insight.title}`}
     >
+      {insight.image ? (
       <Image
         src={insight.image}
         alt=""
@@ -33,6 +36,9 @@ export default function InsightCard({
           18vw
         "
       />
+      ) : (
+        <Art seed={insight.href} className={styles.cardImage} variant="card" />
+      )}
 
       <span
         className={styles.blurOverlay}

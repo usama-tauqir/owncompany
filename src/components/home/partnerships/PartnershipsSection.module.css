@@ -402,3 +402,9 @@
     transition: none;
   }
 }
+.partnerWordmark {
+  font-size: clamp(18px, 1.4vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}

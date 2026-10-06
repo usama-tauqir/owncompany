@@ -1,5 +1,7 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
+
 import {
   useState,
   type FormEvent,
@@ -336,7 +338,7 @@ export default function ContactForm() {
             htmlFor="contact-job-interest"
             className={styles.fieldLabel}
           >
-            I am looking for a job at Devsinc*
+            I am looking for a job at {siteConfig.name}*
           </label>
 
           <select

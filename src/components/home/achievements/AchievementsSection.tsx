@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import Link from "next/link";
 
 import AchievementCounter from "./AchievementCounter";
@@ -21,7 +22,7 @@ export default function AchievementsSection() {
             id="achievements-heading"
             className={styles.heading}
           >
-            Devsinc&apos;s Achievements
+            {siteConfig.name}&apos;s Achievements
           </h2>
 
           <div className={styles.description}>
@@ -31,7 +32,7 @@ export default function AchievementsSection() {
             </p>
 
             <p>
-              Devsinc brings an unwavering commitment
+              {siteConfig.name} brings an unwavering commitment
               to excellence, backed by a global
               presence.
             </p>

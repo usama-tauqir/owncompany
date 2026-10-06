@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import Link from "next/link";
 
 import FeaturedPublications from "./FeaturedPublications";
@@ -12,12 +13,12 @@ export default function HeroContent() {
           id="home-hero-heading"
           className={styles.heroHeading}
         >
-          Building at the Speed of AI
+          {siteConfig.tagline}
         </h1>
 
         <p className={styles.heroDescription}>
-          We help companies across North America, Middle East,
-          Africa and Asia Pacific with technological development
+          We design, build and run digital products for ambitious
+          teams across the Americas, Europe, the Middle East and Asia.
         </p>
 
         <Link

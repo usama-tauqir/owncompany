@@ -101,7 +101,7 @@ export default function ContactGlobalSection() {
           <div className={styles.infoCards}>
             <ContactInfoCard
               title="Global Presence"
-              description="We're across 5 continents, explore our office nearest to you."
+              description="Find the office closest to you and talk to a local team."
               href="/about-us#geography"
               icon="globe"
             />

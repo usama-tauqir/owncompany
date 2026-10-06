@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { regions } from "./data/regions";
+import { usePathname } from "next/navigation";
+
+import { currentRegionLabel, regions } from "./data/regions";
 import styles from "./Navbar.module.css";
 
 export interface GlobalSelectorProps {
@@ -17,6 +19,8 @@ export default function GlobalSelector({
   onClose,
   onNavigate,
 }: GlobalSelectorProps) {
+  const pathname = usePathname();
+
   const handleNavigate = () => {
     onClose();
     onNavigate();
@@ -31,7 +35,7 @@ export default function GlobalSelector({
         aria-controls="global-region-menu"
         onClick={onToggle}
       >
-        <span>Global</span>
+        <span>{currentRegionLabel(pathname)}</span>
 
         <span
           className={open ? styles.chevronOpen : styles.chevron}
@@ -54,6 +58,8 @@ export default function GlobalSelector({
           <Link
             key={region.href}
             href={region.href}
+            hrefLang={region.lang}
+            aria-current={pathname === region.href ? "page" : undefined}
             className={styles.globalSelectorLink}
             onClick={handleNavigate}
           >

@@ -801,3 +801,9 @@
     animation: none;
   }
 }
+/* Emoji flags (no image assets needed) */
+.officeFlag {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+}

@@ -1019,3 +1019,11 @@
 :global(html.dark) :global(.mobile-accordion__button) {
   color: #ffffff;
 }
+/* =========================================================
+   RTL (Arabic regional pages)
+   ========================================================= */
+
+:global([dir="rtl"]) .globalSelectorMenu {
+  right: auto;
+  left: 0;
+}

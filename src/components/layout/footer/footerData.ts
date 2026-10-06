@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export interface FooterLink {
   label: string;
   href: string;
@@ -33,8 +35,20 @@ export const footerMenus: FooterMenu[] = [
         href: "/about-us",
       },
       {
+        label: "Leadership",
+        href: "/leadership",
+      },
+      {
+        label: "Geographies",
+        href: "/geographies",
+      },
+      {
         label: "Careers",
         href: "/career",
+      },
+      {
+        label: "Contact",
+        href: "/contact",
       },
     ],
   },
@@ -86,6 +100,14 @@ export const footerMenus: FooterMenu[] = [
       {
         label: "Gaming",
         href: "/industry/gaming",
+      },
+      {
+        label: "Real Estate",
+        href: "/industry/real-estate",
+      },
+      {
+        label: "Education",
+        href: "/industry/education",
       },
     ],
   },
@@ -210,6 +232,26 @@ export const footerMenus: FooterMenu[] = [
         label: "Generative AI",
         href: "/services/genai",
       },
+      {
+        label: "AI & Data Systems",
+        href: "/services/ai-data-systems",
+      },
+      {
+        label: "Product Studio",
+        href: "/services/product-studio",
+      },
+      {
+        label: "Advisory & Strategy",
+        href: "/services/advisory-strategy",
+      },
+      {
+        label: "Payment as a Service",
+        href: "/services/payment-as-a-service",
+      },
+      {
+        label: "Architectural Visualization",
+        href: "/services/architectural-visualization",
+      },
     ],
   },
   {
@@ -220,67 +262,32 @@ export const footerMenus: FooterMenu[] = [
     links: [
       {
         label: "Blogs",
-        href: "/learning",
+        href: "/blogs",
       },
       {
         label: "Case Studies",
         href: "/case-studies",
       },
+      {
+        label: "News",
+        href: "/news",
+      },
+      {
+        label: "Whitepapers",
+        href: "/whitepapers",
+      },
+      {
+        label: "Podcast",
+        href: "/podcast",
+      },
     ],
   },
 ];
 
-export const footerOffices: FooterOfficeData[] = [
-  {
-    country: "Pakistan",
-    officeType: "Global Delivery Center",
-    flag: "/images/footer/flags/pakistan.webp",
-    addressLines: [
-      "Plot B, 281 Ghazi Rd,",
-      "Khuda Buksh Colony",
-      "KB Society, Lahore,",
-      "Punjab",
-    ],
-  },
-  {
-    country: "USA",
-    officeType: "Regional Office",
-    flag: "/images/footer/flags/usa.webp",
-    addressLines: [
-      "18 S 2nd Street #120",
-      "San Jose, CA, 95113,",
-      "United States",
-    ],
-  },
-  {
-    country: "UAE",
-    officeType: "Regional Office",
-    flag: "/images/footer/flags/uae.webp",
-    addressLines: [
-      "34HW+5J5 - Parkside",
-      "Retail Level - Cluster R",
-      "- Jumeirah Lakes",
-      "Towers - Dubai",
-    ],
-  },
-  {
-    country: "UK",
-    officeType: "Regional Office",
-    flag: "/images/footer/flags/uk.webp",
-    addressLines: [
-      "128 City Road London",
-      "EC1V 2NX, United",
-      "Kingdom",
-    ],
-  },
-  {
-    country: "KSA",
-    officeType: "Regional Office",
-    flag: "/images/footer/flags/ksa.webp",
-    addressLines: [
-      "3141 Anas Ibn Malik",
-      "Rd, Al Malqa, Riyadh",
-      "13521 KSA",
-    ],
-  },
-];
+/* Offices come from the brand config so there is one place to edit them. */
+export const footerOffices: FooterOfficeData[] = siteConfig.offices.map((office) => ({
+  country: office.country,
+  officeType: office.type,
+  addressLines: [...office.addressLines],
+  flag: office.flag,
+}));

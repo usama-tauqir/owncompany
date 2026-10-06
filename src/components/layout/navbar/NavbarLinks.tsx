@@ -1,5 +1,8 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
+import { useLocale } from "@/i18n/useLocale";
+
 import type { MenuId } from "./mega-menu/types";
 import MegaMenuTrigger from "./mega-menu/MegaMenuTrigger";
 import styles from "./Navbar.module.css";
@@ -11,38 +14,22 @@ export interface NavbarLinksProps {
   onMenuClose: () => void;
 }
 
-const navigationItems: Array<{
-  id: MenuId;
-  label: string;
-}> = [
-  {
-    id: "what-we-do",
-    label: "What we do",
-  },
-  {
-    id: "who-we-help",
-    label: "Who we help",
-  },
-  {
-    id: "who-we-are",
-    label: "Who We Are",
-  },
-  {
-    id: "how-we-deliver",
-    label: "How we deliver",
-  },
-  {
-    id: "join-devsinc",
-    label: "Join devsinc",
-  },
-];
-
 export default function NavbarLinks({
   activeMenu,
   onMenuToggle,
   onMenuOpen,
   onMenuClose,
 }: NavbarLinksProps) {
+  const { dict } = useLocale();
+
+  const navigationItems: Array<{ id: MenuId; label: string }> = [
+    { id: "what-we-do", label: dict.nav.whatWeDo },
+    { id: "who-we-help", label: dict.nav.whoWeHelp },
+    { id: "who-we-are", label: dict.nav.whoWeAre },
+    { id: "how-we-deliver", label: dict.nav.howWeDeliver },
+    { id: "join", label: `${dict.nav.join} ${siteConfig.shortName}` },
+  ];
+
   return (
     <nav
       className={styles.navbarLinks}

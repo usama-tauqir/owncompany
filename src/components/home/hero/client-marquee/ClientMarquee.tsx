@@ -30,14 +30,18 @@ function LogoGroup({
           key={`${client.name}-${index}`}
           className={styles.logoItem}
         >
-          <Image
-            src={client.image}
-            alt={hidden ? "" : client.name}
-            width={190}
-            height={82}
-            className={styles.clientLogo}
-            sizes="(max-width: 640px) 120px, 170px"
-          />
+          {client.image ? (
+            <Image
+              src={client.image}
+              alt={hidden ? "" : client.name}
+              width={190}
+              height={82}
+              className={styles.clientLogo}
+              sizes="(max-width: 640px) 120px, 170px"
+            />
+          ) : (
+            <span className={styles.clientWordmark}>{client.name}</span>
+          )}
         </div>
       ))}
     </div>

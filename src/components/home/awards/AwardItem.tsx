@@ -13,6 +13,7 @@ export default function AwardItem({
 }: AwardItemProps) {
   return (
     <div className={styles.awardItem}>
+      {award.image ? (
       <Image
         src={award.image}
         alt={award.name}
@@ -25,6 +26,9 @@ export default function AwardItem({
           180px
         "
       />
+      ) : (
+        <span className={styles.awardBadge}>{award.name}</span>
+      )}
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function FeaturedInsightsSection() {
       );
 
       /*
-       * Devsinc-like movement:
+       * Column parallax movement:
        * first column moves down while third moves up.
        */
       const movement = (progress - 0.5) * 18;
@@ -138,7 +138,7 @@ export default function FeaturedInsightsSection() {
             </h2>
 
             <p className={styles.description}>
-              From Concept to Completion
+              Ideas, shipped
             </p>
 
             <Link

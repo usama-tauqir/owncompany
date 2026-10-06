@@ -150,7 +150,7 @@
   column-gap: 1px;
 
   /*
-   * Large leading space like Devsinc:
+   * Large leading space for visual rhythm:
    * first leader starts around the center area.
    */
   padding-left: clamp(420px, 40vw, 760px);
